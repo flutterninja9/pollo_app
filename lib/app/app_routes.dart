@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pollo_education/auth/view/auth_screen.dart';
 import 'package:pollo_education/home/view/home_screen.dart';
+import 'package:pollo_education/profile/profile_screen.dart';
 import 'package:pollo_education/splash/splash_screen.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
@@ -23,6 +24,10 @@ class AppRoutes {
     GoRoute(
       path: HomeScreen.routeName,
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: ProfileScreen.routeName,
+      builder: (context, state) => const ProfileScreen(),
     ),
   ];
 }
