@@ -20,7 +20,17 @@ class AppTheme {
     ),
     fontFamily: R.constant.fontFamily,
     inputDecorationTheme: const InputDecorationTheme(
-      border: OutlineInputBorder(),
+      contentPadding: EdgeInsets.symmetric(horizontal: 12),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+      ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: R.color.background,
+      selectedItemColor: R.color.primary,
+      unselectedItemColor: R.color.onBackground,
+      enableFeedback: true,
+      elevation: 10,
     ),
   );
 
@@ -40,7 +50,16 @@ class AppTheme {
     ),
     fontFamily: R.constant.fontFamily,
     inputDecorationTheme: const InputDecorationTheme(
-      border: OutlineInputBorder(),
+      contentPadding: EdgeInsets.symmetric(horizontal: 12),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+      ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: R.color.background,
+      selectedItemColor: R.color.primary,
+      unselectedItemColor: R.color.background,
+      enableFeedback: true,
     ),
   );
 }
