@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pollo_education/app/app_routes.dart';
 import 'package:pollo_education/auth/view_model/auth_view_model.dart';
 import 'package:pollo_education/design_system/themes.dart';
-import 'package:pollo_education/home/view/home_screen.dart';
+import 'package:pollo_education/home/view/home_screen_container.dart';
 import 'package:pollo_education/splash/splash_screen.dart';
 
 class PoloApp extends ConsumerWidget {
@@ -16,7 +16,7 @@ class PoloApp extends ConsumerWidget {
       (_, next) {
         next.maybeWhen(
           authenticated: () {
-            goRouter.pushReplacement(HomeScreen.routeName);
+            goRouter.pushReplacement(HomeScreenContainer.routeName);
           },
           orElse: () {
             goRouter.pushReplacement(SplashScreen.routeName);
@@ -25,6 +25,7 @@ class PoloApp extends ConsumerWidget {
       },
     );
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Polo Education',
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,

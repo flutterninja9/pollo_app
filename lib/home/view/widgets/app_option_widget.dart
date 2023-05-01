@@ -12,23 +12,25 @@ class AppOptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 70.0,
       margin: const EdgeInsets.only(right: 8.0),
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        shape: BoxShape.circle,
-        border: const Border.fromBorderSide(
-          BorderSide(
-            color: Colors.grey,
-            width: 1,
-          ),
-        ),
+        color: Color.fromRGBO(5, 31, 49, 1),
+        borderRadius: BorderRadius.circular(12),
+        // border: const Border.fromBorderSide(
+        //   BorderSide(
+        //     color: Colors.grey,
+        //     width: 1,
+        //   ),
+        // ),
       ),
       child: Center(
         child: Text(
           appOption.label,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.w600),
           textAlign: TextAlign.center,
         ),
       ),

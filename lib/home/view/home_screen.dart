@@ -1,12 +1,13 @@
-import 'package:banner_carousel/banner_carousel.dart';
+import 'package:better_player/better_player.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pollo_education/app/app_routes.dart';
+import 'package:pollo_education/design_system/color.dart';
 import 'package:pollo_education/home/view/widgets/app_action.dart';
-import 'package:pollo_education/home/view/widgets/app_actions_widget.dart';
+import 'package:pollo_education/home/view/widgets/app_actions_container.dart';
 import 'package:pollo_education/home/view/widgets/app_option.dart';
 import 'package:pollo_education/home/view/widgets/app_option_widget.dart';
-import 'package:pollo_education/home/view/widgets/custom_search_delegate.dart';
 import 'package:pollo_education/profile/profile_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -19,29 +20,10 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   late final ScrollController _scrollController;
-  int currentIndex = 0;
-  final bannersImages = [
-    BannerModel(
-      id: "1",
-      imagePath:
-          'https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782__340.jpg',
-    ),
-    BannerModel(
-      id: "2",
-      imagePath:
-          'https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782__340.jpg',
-    ),
-    BannerModel(
-      id: "3",
-      imagePath:
-          'https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782__340.jpg',
-    ),
-    BannerModel(
-      id: "4",
-      imagePath:
-          'https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782__340.jpg',
-    ),
-  ];
+  TextEditingController searchTextEditingController = TextEditingController();
+
+  bool showSearchBar = false;
+  PColor pColor = PColor.instance;
 
   final appOptions = <AppOption>[
     AppOption(
@@ -148,12 +130,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
       ]);
 
-  void changeIndex(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -173,92 +149,108 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: changeIndex,
-        currentIndex: currentIndex,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            label: 'Menu',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'B2B',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'B2C',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business_center),
-            label: 'Enterpreneur',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'My Courses',
-          ),
-        ],
-      ),
+      backgroundColor: Color.fromRGBO(248, 250, 251, 1),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
           SliverAppBar(
+            backgroundColor: Colors.white,
             elevation: 0,
-            title: Text(
-              'Pollo Education',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(color: Theme.of(context).colorScheme.onBackground),
-            ),
-            centerTitle: true,
+            title: showSearchBar
+                ? TextField(
+                    controller: searchTextEditingController,
+                    style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                    autofocus: true,
+                    decoration: InputDecoration(
+                      hintText: 'start typing..',
+                      hintStyle: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black.withOpacity(0.7),
+                          fontWeight: FontWeight.w400),
+                      contentPadding: const EdgeInsets.only(left: 0),
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                      ),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
             pinned: true,
-            leadingWidth: 100,
             leading: IconButton(
-              onPressed: () {},
-              icon: const Text('Select Goal'),
+              onPressed: () {
+                ref.read(goRouterProvider).push(ProfileScreen.routeName);
+              },
+              icon: const CircleAvatar(
+                radius: 18,
+                backgroundColor: Color.fromRGBO(96, 196, 176, 1),
+                child: Text(
+                  'D',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
+                ),
+              ),
             ),
             actions: [
-              IconButton(
-                onPressed: () async {
-                  final result = await showSearch(
-                    context: context,
-                    delegate: CustomSearchDelegate(),
-                  );
-                },
-                icon: const Icon(Icons.search_rounded),
-              ),
-              IconButton(
-                onPressed: () {
-                  ref.read(goRouterProvider).push(ProfileScreen.routeName);
-                },
-                icon: const Icon(Icons.person_outline),
-              ),
+              showSearchBar
+                  ? IconButton(
+                      onPressed: () async {
+                        searchTextEditingController.clear();
+                        showSearchBar = false;
+                        setState(() {});
+                      },
+                      icon: const Icon(
+                        Icons.close,
+                        color: Colors.black,
+                      ),
+                    )
+                  : IconButton(
+                      onPressed: () async {
+                        setState(() {
+                          showSearchBar = true;
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.search_rounded,
+                        color: Colors.black,
+                      ),
+                    ),
             ],
           ),
           SliverToBoxAdapter(
-            child: BannerCarousel(
-              banners: bannersImages,
-              customizedIndicators: const IndicatorModel.animation(
-                width: 10,
-                height: 5,
-                spaceBetween: 2,
-                widthAnimation: 20,
+              child: CarouselSlider(
+            items: [
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  image: const DecorationImage(
+                    image: NetworkImage(
+                        "https://plus.unsplash.com/premium_photo-1661767552224-ef72bb6b671f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-              height: 120,
-              activeColor: Theme.of(context).colorScheme.secondary,
-              disableColor: Theme.of(context).colorScheme.onSecondary,
-              animation: true,
-              borderRadius: 10,
-              width: 250,
-              indicatorBottom: false,
+            ],
+            options: CarouselOptions(
+              viewportFraction: 1,
+              height: 180.0,
+              autoPlay: true,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
             ),
-          ),
+          )),
           SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 24),
             sliver: SliverToBoxAdapter(
-              child: SizedBox(
-                height: 100.0,
+              child: Container(
+                height: 40,
+                alignment: Alignment.center,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: appOptions.length,
@@ -272,27 +264,47 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 24),
             sliver: SliverToBoxAdapter(
-              child: AppActionsWidget(action: recommendedAppAction),
+              child: AppActionsContainer(action: recommendedAppAction),
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
             sliver: SliverToBoxAdapter(
-              child: AppActionsWidget(action: newlyReleased),
+              child: AppActionsContainer(
+                action: newlyReleased,
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          content: AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: BetterPlayer.network(
+                              "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                              betterPlayerConfiguration:
+                                  BetterPlayerConfiguration(
+                                aspectRatio: 16 / 9,
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                },
+              ),
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
             sliver: SliverToBoxAdapter(
-              child: AppActionsWidget(action: recommendedAppAction),
+              child: AppActionsContainer(action: recommendedAppAction),
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
             sliver: SliverToBoxAdapter(
-              child: AppActionsWidget(action: newlyReleased),
+              child: AppActionsContainer(action: newlyReleased),
             ),
           ),
           const SliverToBoxAdapter(

@@ -5,9 +5,13 @@ class AppActionWidget extends StatelessWidget {
   const AppActionWidget({
     super.key,
     required this.appAction,
+    required this.onTap,
+    required this.coverImage,
   });
 
   final AppAction appAction;
+  final VoidCallback onTap;
+  final String coverImage;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +25,21 @@ class AppActionWidget extends StatelessWidget {
         border: const Border.fromBorderSide(
           BorderSide(
             color: Colors.grey,
-            width: 1,
+            width: 2,
           ),
         ),
+        image: DecorationImage(
+            image: NetworkImage(
+              coverImage,
+            ),
+            fit: BoxFit.cover),
       ),
       child: IconButton(
-        onPressed: () {},
+        onPressed: onTap,
         icon: const Icon(
           Icons.play_arrow,
           size: 40,
+          color: Color.fromRGBO(5, 31, 49, 1),
         ),
       ),
     );

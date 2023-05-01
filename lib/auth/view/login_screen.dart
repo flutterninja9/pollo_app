@@ -16,77 +16,60 @@ class LoginScreen extends ConsumerWidget {
     });
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text("Polo Education Login"),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(top: 60.0),
-              child: Center(
-                child: FlutterLogo(
-                  style: FlutterLogoStyle.horizontal,
-                  size: 200,
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 300,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/student.jpg'),
+                    fit: BoxFit.cover)),
+          ),
+          SizedBox(height: 40),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: const Text(
+              'GROW \nTOGATHER \nTO BE BETTER',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 40,
+                  fontWeight: FontWeight.w900),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'We will teach you to really understand and get work-ready skills for your future career.',
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.7),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              ref.read(authFormStateProvider.notifier).verifyOtp();
+            },
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(vertical: 16),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(117, 229, 169, 1),
+                  borderRadius: BorderRadius.circular(30)),
+              child: const Text(
+                'Get Started',
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white),
               ),
             ),
-            const TextField(
-              decoration: InputDecoration(
-                  labelText: 'Mobile Number',
-                  hintText: 'Enter valid mobile number'),
-            ),
-            if (authFormState.showOtpField) const SizedBox(height: 16),
-            if (authFormState.showOtpField)
-              const TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Otp',
-                    hintText: 'Enter Otp'),
-              ),
-            const SizedBox(height: 10),
-            if (authFormState.showOtpField)
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    ref.read(authFormStateProvider.notifier).verifyOtp();
-                  },
-                  child: const Text(
-                    'Verify Otp',
-                  ),
-                ),
-              )
-            else
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    ref.read(authFormStateProvider.notifier).getOtp();
-                  },
-                  child: const Text(
-                    'Send Otp',
-                  ),
-                ),
-              ),
-            if (!authFormState.showOtpField &&
-                authFormState.showResendOtpButton)
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    ref.read(authFormStateProvider.notifier).resendOtp();
-                  },
-                  child: const Text(
-                    'Resend Otp',
-                  ),
-                ),
-              ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
