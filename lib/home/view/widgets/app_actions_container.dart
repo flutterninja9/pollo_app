@@ -48,8 +48,10 @@ class _AppActionsContainerState extends State<AppActionsContainer> {
               const Spacer(),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ShowAllScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ShowAllScreen()));
                 },
                 child: Container(
                   margin: const EdgeInsets.all(8),
@@ -75,8 +77,7 @@ class _AppActionsContainerState extends State<AppActionsContainer> {
                 final appAction = widget.action.appActions[index];
 
                 return AppActionWidget(
-                  coverImage:
-                      'https://images.unsplash.com/photo-1596496181871-9681eacf9764?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fG1hdGhlbWF0aWNzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+                  coverImage: appAction.imagePath,
                   appAction: appAction,
                   onTap: () {
                     initializePlayer();

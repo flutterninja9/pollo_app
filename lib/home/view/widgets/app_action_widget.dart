@@ -18,7 +18,6 @@ class AppActionWidget extends StatelessWidget {
     return Container(
       width: 130.0,
       margin: const EdgeInsets.only(right: 8.0),
-      padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.all(Radius.circular(10.0)),
@@ -29,18 +28,39 @@ class AppActionWidget extends StatelessWidget {
           ),
         ),
         image: DecorationImage(
-            image: NetworkImage(
-              coverImage,
-            ),
-            fit: BoxFit.cover),
-      ),
-      child: IconButton(
-        onPressed: onTap,
-        icon: const Icon(
-          Icons.play_arrow,
-          size: 40,
-          color: Color.fromRGBO(5, 31, 49, 1),
+          image: NetworkImage(
+            coverImage,
+          ),
+          fit: BoxFit.cover,
         ),
+      ),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  // darks shades
+                  Colors.black.withOpacity(0.1),
+                  Colors.black.withOpacity(0.3),
+                  Colors.black.withOpacity(0.4),
+                ],
+              ),
+            ),
+          ),
+          Center(
+            child: IconButton(
+              onPressed: onTap,
+              icon: Icon(
+                Icons.play_arrow,
+                size: 40,
+                color: Theme.of(context).colorScheme.surface,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
