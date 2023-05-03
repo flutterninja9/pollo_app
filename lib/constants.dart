@@ -4,5 +4,5 @@ class Constant {
   static final _instance = Constant._();
   static Constant get instance => _instance;
 
-  final String fontFamily = 'OpenSans';
+  final String fontFamily = 'Inter';
 }
