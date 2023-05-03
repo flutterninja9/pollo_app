@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pollo_education/auth/view_model/auth_form_viewmodel.dart';
 import 'package:pollo_education/auth/view_model/auth_view_model.dart';
 
@@ -22,16 +22,16 @@ class LoginScreen extends ConsumerWidget {
         children: [
           Container(
             height: 300,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/student.jpg'),
                     fit: BoxFit.cover)),
           ),
-          SizedBox(height: 40),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-            child: const Text(
-              'GROW \nTOGATHER \nTO BE BETTER',
+          const SizedBox(height: 40),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: Text(
+              'GROW \nTOGETHER \nTO BE BETTER',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 40,
@@ -53,12 +53,12 @@ class LoginScreen extends ConsumerWidget {
               ref.read(authFormStateProvider.notifier).verifyOtp();
             },
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
               width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: Color.fromRGBO(117, 229, 169, 1),
+                  color: const Color.fromRGBO(117, 229, 169, 1),
                   borderRadius: BorderRadius.circular(30)),
               child: const Text(
                 'Get Started',

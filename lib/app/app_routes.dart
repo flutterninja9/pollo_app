@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pollo_education/auth/view/auth_screen.dart';
 import 'package:pollo_education/home/view/home_screen.dart';
 import 'package:pollo_education/home/view/home_screen_container.dart';

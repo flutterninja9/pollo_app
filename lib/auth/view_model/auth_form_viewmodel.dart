@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pollo_education/auth/view_model/auth_form_state.dart';
 
 final authFormStateProvider =

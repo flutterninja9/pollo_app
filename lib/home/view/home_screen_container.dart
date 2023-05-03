@@ -23,11 +23,11 @@ class _HomeScreenContainerState extends State<HomeScreenContainer> {
   }
 
   List<Widget> screens = [
-    HomeScreen(),
-    B2BScreen(),
-    B2CScreen(),
-    EnterpreneurScreen(),
-    MyCourseScreen()
+    const HomeScreen(),
+    const B2BScreen(),
+    const B2CScreen(),
+    const EnterpreneurScreen(),
+    const MyCourseScreen()
   ];
 
   @override

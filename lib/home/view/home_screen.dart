@@ -1,11 +1,13 @@
 import 'package:better_player/better_player.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pollo_education/app/app_routes.dart';
 import 'package:pollo_education/design_system/color.dart';
 import 'package:pollo_education/home/view/widgets/app_action.dart';
 import 'package:pollo_education/home/view/widgets/app_actions_container.dart';
+import 'package:pollo_education/home/view/widgets/app_banner_container.dart';
+import 'package:pollo_education/home/view/widgets/app_banners.dart';
 import 'package:pollo_education/home/view/widgets/app_option.dart';
 import 'package:pollo_education/home/view/widgets/app_option_widget.dart';
 import 'package:pollo_education/profile/profile_screen.dart';
@@ -130,6 +132,94 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
       ]);
 
+  final appBannersOne = AppBanners(
+    header: "Explore Summer Offers",
+    banners: [
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+    ],
+  );
+
+  final appBannersTwo = AppBanners(
+    header: "Offers only for you",
+    banners: [
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+    ],
+  );
+
+  final appBannersThree = AppBanners(
+    header: "Check out these offers",
+    banners: [
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+    ],
+  );
+
+  final appBannersFour = AppBanners(
+    header: "Something special for you",
+    banners: [
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+      AppBanner(
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        title: "Check out now!",
+      ),
+    ],
+  );
+
   @override
   void initState() {
     super.initState();
@@ -149,7 +239,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(248, 250, 251, 1),
+      backgroundColor: Theme.of(context).canvasColor,
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
@@ -165,7 +255,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         fontWeight: FontWeight.w500),
                     autofocus: true,
                     decoration: InputDecoration(
-                      hintText: 'start typing..',
+                      hintText: 'Start typing..',
                       hintStyle: TextStyle(
                           fontSize: 16,
                           color: Colors.black.withOpacity(0.7),
@@ -179,7 +269,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ),
                   )
-                : const SizedBox(),
+                : Text(
+                    "Polo Education",
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
             pinned: true,
             leading: IconButton(
               onPressed: () {
@@ -270,6 +363,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
           SliverPadding(
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 24),
+            sliver: SliverToBoxAdapter(
+              child: AppBannersContainer(banners: appBannersOne),
+            ),
+          ),
+          SliverPadding(
             padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
             sliver: SliverToBoxAdapter(
               child: AppActionsContainer(
@@ -284,7 +383,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             child: BetterPlayer.network(
                               "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
                               betterPlayerConfiguration:
-                                  BetterPlayerConfiguration(
+                                  const BetterPlayerConfiguration(
                                 aspectRatio: 16 / 9,
                               ),
                             ),
@@ -296,13 +395,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
           SliverPadding(
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 24),
+            sliver: SliverToBoxAdapter(
+              child: AppBannersContainer(banners: appBannersTwo),
+            ),
+          ),
+          SliverPadding(
             padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
             sliver: SliverToBoxAdapter(
               child: AppActionsContainer(action: recommendedAppAction),
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 24),
+            sliver: SliverToBoxAdapter(
+              child: AppBannersContainer(banners: appBannersThree),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 24),
             sliver: SliverToBoxAdapter(
               child: AppActionsContainer(action: newlyReleased),
             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pollo_education/app/app_routes.dart';
 import 'package:pollo_education/auth/view/auth_screen.dart';
 
