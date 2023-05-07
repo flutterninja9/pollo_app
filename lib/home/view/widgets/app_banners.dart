@@ -26,16 +26,21 @@ class AppBanners {
 }
 
 class AppBanner {
-  final String imageUrl;
-  final String title;
+  final String? id;
+  final String? imageUrl;
+  final String? title;
+  final String? subTitle;
 
   AppBanner({
-    required this.imageUrl,
-    required this.title,
+    this.id,
+    this.subTitle,
+    this.imageUrl,
+    this.title,
   });
 
   @override
-  String toString() => 'AppBanner(imageUrl: $imageUrl, title: $title)';
+  String toString() =>
+      'AppBanner(imageUrl: $imageUrl, title: $title,subTitle:$subTitle,id:$id)';
 
   @override
   bool operator ==(Object other) {
@@ -43,7 +48,9 @@ class AppBanner {
 
     return other is AppBanner &&
         other.imageUrl == imageUrl &&
-        other.title == title;
+        other.title == title &&
+        other.subTitle == subTitle &&
+        other.id == id;
   }
 
   @override

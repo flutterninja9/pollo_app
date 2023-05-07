@@ -28,7 +28,6 @@ class PoloApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'Polo Education',
       theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
       routerConfig: goRouter,
     );
   }

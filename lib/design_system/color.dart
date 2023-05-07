@@ -17,4 +17,8 @@ class PColor {
   Color surface = const Color.fromRGBO(255, 255, 255, 1);
   Color onSurface = const Color.fromRGBO(0, 0, 0, 1);
   Color shadow = const Color.fromRGBO(0, 0, 0, 0.25);
+  Color blueColor = const Color.fromRGBO(5, 31, 48, 1);
+  Color greenColor = const Color.fromRGBO(96, 196, 176, 1);
+  Color yellowColor = const Color.fromRGBO(217, 245, 187, 1);
+  Color backgroundColor = const Color.fromRGBO(247, 250, 251, 1);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pollo_education/design_system/r.dart';
 import 'package:pollo_education/home/view/widgets/app_option.dart';
 
 class AppOptionWidget extends StatelessWidget {
@@ -15,7 +16,7 @@ class AppOptionWidget extends StatelessWidget {
       margin: const EdgeInsets.only(right: 8.0),
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(5, 31, 49, 1),
+        color: R.color.blueColor,
         borderRadius: BorderRadius.circular(12),
         // border: const Border.fromBorderSide(
         //   BorderSide(

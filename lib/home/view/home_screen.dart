@@ -2,8 +2,10 @@ import 'package:better_player/better_player.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pollo_education/app/app_routes.dart';
 import 'package:pollo_education/design_system/color.dart';
+import 'package:pollo_education/design_system/r.dart';
 import 'package:pollo_education/home/view/widgets/app_action.dart';
 import 'package:pollo_education/home/view/widgets/app_actions_container.dart';
 import 'package:pollo_education/home/view/widgets/app_banner_container.dart';
@@ -26,6 +28,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   bool showSearchBar = false;
   PColor pColor = PColor.instance;
+  bool showSelectState = false;
 
   final appOptions = <AppOption>[
     AppOption(
@@ -143,53 +146,53 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ]);
 
   final appBannersOne = AppBanners(
-    header: "Explore Summer Offers",
+    header: "Recommended Subjects",
     banners: [
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
-        title: "Check out now!",
-      ),
+          imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
     ],
   );
 
   final appBannersTwo = AppBanners(
-    header: "Offers only for you",
+    header: "Newly Released Subjects",
     banners: [
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://plus.unsplash.com/premium_photo-1681248156365-cbe0295dbbe0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://plus.unsplash.com/premium_photo-1681248156365-cbe0295dbbe0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
     ],
   );
 
@@ -197,25 +200,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     header: "Check out these offers",
     banners: [
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://plus.unsplash.com/premium_photo-1661767552224-ef72bb6b671f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://plus.unsplash.com/premium_photo-1661767552224-ef72bb6b671f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1581078426770-6d336e5de7bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1581078426770-6d336e5de7bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
     ],
   );
 
@@ -223,25 +226,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     header: "Something special for you",
     banners: [
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://plus.unsplash.com/premium_photo-1663126346116-f0ccaf232268?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://plus.unsplash.com/premium_photo-1663126346116-f0ccaf232268?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
       AppBanner(
-        imageUrl:
-            'https://images.unsplash.com/photo-1603354350317-6f7aaa5911c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        title: "Check out now!",
-      ),
+          imageUrl:
+              'https://images.unsplash.com/photo-1603354350317-6f7aaa5911c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+          title: "General Knowledge",
+          subTitle: '10 videos'),
     ],
   );
 
@@ -264,189 +267,241 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).canvasColor,
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          SliverAppBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            title: showSearchBar
-                ? TextField(
-                    controller: searchTextEditingController,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      hintText: 'Start typing..',
-                      hintStyle: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black.withOpacity(0.7),
-                          fontWeight: FontWeight.w400),
-                      contentPadding: const EdgeInsets.only(left: 0),
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
+      backgroundColor: R.color.background,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              color: R.color.background,
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  showSelectState = !showSelectState;
+                                  setState(() {});
+                                },
+                                child: Row(
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.locationArrow,
+                                      color: R.color.blueColor,
+                                    ),
+                                    const SizedBox(width: 20),
+                                    Text(
+                                      'Bihar',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 20,
+                                          color: R.color.onSurface),
+                                    ),
+                                    showSelectState
+                                        ? Icon(Icons.arrow_drop_up,
+                                            color: R.color.blueColor)
+                                        : Icon(Icons.arrow_drop_down,
+                                            color: R.color.blueColor),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                ref
+                                    .read(goRouterProvider)
+                                    .push(ProfileScreen.routeName);
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(12),
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        width: 1,
+                                        color: R.color.blueColor
+                                            .withOpacity(0.2))),
+                                child: const Center(
+                                  child: Text(
+                                    'D',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
+                      AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        height: showSelectState ? 50 : 0,
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        margin: const EdgeInsets.only(left: 8, bottom: 8),
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 28,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: const EdgeInsets.only(right: 6),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 4, horizontal: 6),
+                                decoration: BoxDecoration(
+                                    color: R.color.blueColor,
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Center(
+                                  child: Text(
+                                    'Uttar Pradesh',
+                                    style: TextStyle(
+                                        color: R.color.background,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              );
+                            }),
                       ),
-                    ),
-                  )
-                : Text(
-                    "Polo Education",
-                    style: Theme.of(context).textTheme.titleMedium,
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 24),
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            border: Border.all(
+                                width: 1,
+                                color: R.color.blueColor.withOpacity(0.4))),
+                        child: Row(
+                          children: [
+                            FaIcon(FontAwesomeIcons.magnifyingGlass,
+                                color: R.color.blueColor, size: 20),
+                            Expanded(
+                              child: TextField(
+                                controller: searchTextEditingController,
+                                style: const TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
+                                decoration: InputDecoration(
+                                  hintText: 'Start typing..',
+                                  hintStyle: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black.withOpacity(0.7),
+                                      fontWeight: FontWeight.w400),
+                                  contentPadding:
+                                      const EdgeInsets.only(left: 8),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                  ),
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-            pinned: true,
-            leading: IconButton(
-              onPressed: () {
-                ref.read(goRouterProvider).push(ProfileScreen.routeName);
-              },
-              icon: const CircleAvatar(
-                radius: 18,
-                backgroundColor: Color.fromRGBO(96, 196, 176, 1),
-                child: Text(
-                  'D',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w600),
-                ),
+                ],
               ),
             ),
-            actions: [
-              showSearchBar
-                  ? IconButton(
-                      onPressed: () async {
-                        searchTextEditingController.clear();
-                        showSearchBar = false;
-                        setState(() {});
-                      },
-                      icon: const Icon(
-                        Icons.close,
-                        color: Colors.black,
-                      ),
-                    )
-                  : IconButton(
-                      onPressed: () async {
-                        setState(() {
-                          showSearchBar = true;
-                        });
-                      },
-                      icon: const Icon(
-                        Icons.search_rounded,
-                        color: Colors.black,
-                      ),
-                    ),
-            ],
-          ),
-          SliverToBoxAdapter(
-              child: CarouselSlider(
-            items: [
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                        "https://plus.unsplash.com/premium_photo-1661767552224-ef72bb6b671f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ],
-            options: CarouselOptions(
-              viewportFraction: 1,
-              height: 180.0,
-              autoPlay: true,
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enableInfiniteScroll: true,
-              autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            ),
-          )),
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 24),
-            sliver: SliverToBoxAdapter(
+            const SizedBox(height: 16),
+            Expanded(
               child: Container(
-                height: 40,
-                alignment: Alignment.center,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: appOptions.length,
-                  itemBuilder: (context, index) {
-                    final appOption = appOptions[index];
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: R.color.backgroundColor,
+                    border: Border(
+                        top: BorderSide(
+                            width: 1,
+                            color: R.color.blueColor.withOpacity(0.2)),
+                        bottom: BorderSide(
+                            width: 1,
+                            color: R.color.blueColor.withOpacity(0.2)))),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 40,
+                        margin: const EdgeInsets.only(
+                            left: 16, top: 16, bottom: 16),
+                        alignment: Alignment.center,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: appOptions.length,
+                          itemBuilder: (context, index) {
+                            final appOption = appOptions[index];
 
-                    return AppOptionWidget(appOption: appOption);
-                  },
-                ),
-              ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 24),
-            sliver: SliverToBoxAdapter(
-              child: AppActionsContainer(action: recommendedAppAction),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
-            sliver: SliverToBoxAdapter(
-              child: AppBannersContainer(banners: appBannersOne),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
-            sliver: SliverToBoxAdapter(
-              child: AppActionsContainer(
-                action: newlyReleased,
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          content: AspectRatio(
-                            aspectRatio: 16 / 9,
-                            child: BetterPlayer.network(
-                              "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                              betterPlayerConfiguration:
-                                  const BetterPlayerConfiguration(
-                                aspectRatio: 16 / 9,
+                            return AppOptionWidget(appOption: appOption);
+                          },
+                        ),
+                      ),
+                      CarouselSlider(
+                        items: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 4),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              image: const DecorationImage(
+                                image: NetworkImage(
+                                    "https://plus.unsplash.com/premium_photo-1661767552224-ef72bb6b671f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
-                        );
-                      });
-                },
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          height: 180.0,
+                          autoPlay: true,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration:
+                              const Duration(milliseconds: 800),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: AppBannersContainer(
+                          banners: appBannersOne,
+                          onClickSeeAll: () {},
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: AppBannersContainer(
+                          banners: appBannersTwo,
+                          onClickSeeAll: () {},
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: AppBannersContainer(
+                          banners: appBannersThree,
+                          onClickSeeAll: () {},
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
-            sliver: SliverToBoxAdapter(
-              child: AppBannersContainer(banners: appBannersTwo),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
-            sliver: SliverToBoxAdapter(
-              child: AppActionsContainer(action: recommendedAppAction),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
-            sliver: SliverToBoxAdapter(
-              child: AppBannersContainer(banners: appBannersThree),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 16),
-            sliver: SliverToBoxAdapter(
-              child: AppActionsContainer(action: newlyReleased),
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 16),
-          ),
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
