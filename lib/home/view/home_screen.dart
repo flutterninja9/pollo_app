@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pollo_education/app/app_routes.dart';
 import 'package:pollo_education/design_system/color.dart';
 import 'package:pollo_education/design_system/r.dart';
+import 'package:pollo_education/home/view/show_all_screen.dart';
 import 'package:pollo_education/home/view/widgets/app_action.dart';
 import 'package:pollo_education/home/view/widgets/app_actions_container.dart';
 import 'package:pollo_education/home/view/widgets/app_banner_container.dart';
@@ -475,7 +476,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         padding: const EdgeInsets.only(left: 16),
                         child: AppBannersContainer(
                           banners: appBannersOne,
-                          onClickSeeAll: () {},
+                          onClickSeeAll: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ShowAllScreen()));
+                          },
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -483,7 +489,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         padding: const EdgeInsets.only(left: 16),
                         child: AppBannersContainer(
                           banners: appBannersTwo,
-                          onClickSeeAll: () {},
+                          onClickSeeAll: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ShowAllScreen()));
+                          },
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -491,7 +502,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         padding: const EdgeInsets.only(left: 16),
                         child: AppBannersContainer(
                           banners: appBannersThree,
-                          onClickSeeAll: () {},
+                          onClickSeeAll: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ShowAllScreen()));
+                          },
                         ),
                       ),
                       const SizedBox(height: 16),

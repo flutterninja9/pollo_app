@@ -78,7 +78,8 @@ class SubjectDetailScreen extends StatelessWidget {
               margin: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(width: 0.5, color: R.color.onSurface)),
+                  border: Border.all(
+                      width: 0.8, color: R.color.blueColor.withOpacity(0.3))),
               child: IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {
