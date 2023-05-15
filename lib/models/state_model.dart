@@ -8,14 +8,19 @@ part 'state_model.g.dart';
 class StateModel {
   @JsonKey(name: "id")
   final String id;
-  @JsonKey(name: "name")
-  final String name;
+  @JsonKey(name: "state")
+  final String state;
+  @JsonKey(name: "state_id")
+  final String stateId;
+  @JsonKey(name: "image")
+  final String image;
 
   StateModel({
     required this.id,
-    required this.name,
+    required this.state,
+    required this.stateId,
+    required this.image,
   });
-
   factory StateModel.fromJson(Map<String, dynamic> json) =>
       _$StateModelFromJson(json);
 

@@ -8,11 +8,15 @@ part of 'state_model.dart';
 
 StateModel _$StateModelFromJson(Map<String, dynamic> json) => StateModel(
       id: json['id'] as String,
-      name: json['name'] as String,
+      state: json['state'] as String,
+      stateId: json['state_id'] as String,
+      image: json['image'] as String,
     );
 
 Map<String, dynamic> _$StateModelToJson(StateModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'state': instance.state,
+      'state_id': instance.stateId,
+      'image': instance.image,
     };

@@ -8,8 +8,17 @@ class BoardModel {
   final String id;
   @JsonKey(name: "name")
   final String name;
+  @JsonKey(name: "board_id")
+  final String boardId;
+  @JsonKey(name: "image")
+  final String image;
+  @JsonKey(name: "state")
+  final String state;
 
-  BoardModel({
+  BoardModel(
+    this.boardId,
+    this.image,
+    this.state, {
     required this.id,
     required this.name,
   });
