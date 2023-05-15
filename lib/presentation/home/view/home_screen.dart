@@ -1,23 +1,38 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pollo_education/app/app_routes.dart';
+import 'package:pollo_education/di.dart';
+import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_option_widget.dart';
+import 'package:pollo_education/utils/asyncValue/async_value.dart';
 import 'package:pollo_education/utils/design_system/color.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banner_container.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
-import 'package:pollo_education/presentation/home/view/widgets/app_option_widget.dart';
-import 'package:pollo_education/presentation/profile/profile_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const routeName = '/home';
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() => _HomeScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => di<GetClassCubit>()..getSubjectListByBoardName(),
+      child: const HomeScreenView(),
+    );
+  }
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenView extends StatefulWidget {
+  static const routeName = '/home';
+  const HomeScreenView({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _HomeScreenViewState();
+}
+
+class _HomeScreenViewState extends State<HomeScreenView> {
   late final ScrollController _scrollController;
   TextEditingController searchTextEditingController = TextEditingController();
 
@@ -282,21 +297,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      // Container(
-                      //   height: 40,
-                      //   margin: const EdgeInsets.only(
-                      //       left: 16, top: 16, bottom: 16),
-                      //   alignment: Alignment.center,
-                      //   child: ListView.builder(
-                      //     scrollDirection: Axis.horizontal,
-                      //     itemCount: appOptions.length,
-                      //     itemBuilder: (context, index) {
-                      //       final appOption = appOptions[index];
+                      Container(
+                          height: 40,
+                          margin: const EdgeInsets.only(
+                              left: 16, top: 16, bottom: 16),
+                          alignment: Alignment.center,
+                          child: BlocBuilder<GetClassCubit,
+                                  AsyncValue<List<ClassModel>>>(
+                              builder: (context, state) {
+                            return state.map(
+                                initial: (_) => const SizedBox(),
+                                loading: (_) => Container(color: Colors.grey),
+                                loaded: (value) {
+                                  return ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: value.data.length,
+                                    itemBuilder: (context, index) {
+                                      final classData = value.data[index];
 
-                      //       return AppOptionWidget(appOption: appOption);
-                      //     },
-                      //   ),
-                      // ),
+                                      return AppOptionWidget(
+                                          classData: classData);
+                                    },
+                                  );
+                                },
+                                failure: (e) => Text(e.toString()));
+                          })),
                       CarouselSlider(
                         items: [
                           Container(

@@ -40,9 +40,10 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
 
   @override
   Future<List<ClassModel>> getClassListByBoardName(String boardName) async {
-    final uri = makeUri('/api/GetBoardListByStateName/$boardName');
+    final uri = makeUri('/api/GetClassListByBoardName/$boardName');
     try {
       final response = await apiClient.get(uri);
+      print(jsonDecode(response.body));
       final data = jsonDecode(response.body)['data'] as List;
       return data.map((e) => ClassModel.fromJson(e)).toList();
     } catch (e) {

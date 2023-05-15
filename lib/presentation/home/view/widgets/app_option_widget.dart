@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
-import 'package:pollo_education/presentation/home/view/widgets/app_option.dart';
 
 class AppOptionWidget extends StatelessWidget {
   const AppOptionWidget({
     super.key,
-    required this.appOption,
+    required this.classData,
   });
 
-  final AppOption appOption;
+  final ClassModel classData;
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +18,11 @@ class AppOptionWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: R.color.blueColor,
         borderRadius: BorderRadius.circular(12),
-        // border: const Border.fromBorderSide(
-        //   BorderSide(
-        //     color: Colors.grey,
-        //     width: 1,
-        //   ),
-        // ),
       ),
       child: Center(
         child: Text(
-          appOption.label,
-          style: TextStyle(
+          classData.classNAme,
+          style: const TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
               fontWeight: FontWeight.w600),
