@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:pollo_education/data_source/remote/i_pollo_remote_data_source.dart';
+import 'package:pollo_education/resourses/remote/i_pollo_remote_data_source.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';

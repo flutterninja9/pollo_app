@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pollo_education/Enterpreneur/view/enterpreneur_screen.dart';
-import 'package:pollo_education/b2b/view/b2b_screen.dart';
-import 'package:pollo_education/b2c/view/b2c_screen.dart';
-import 'package:pollo_education/course/view/my_course_screen.dart';
-import 'package:pollo_education/home/view/home_screen.dart';
+import 'package:pollo_education/presentation/Enterpreneur/view/enterpreneur_screen.dart';
+import 'package:pollo_education/presentation/b2b/view/b2b_screen.dart';
+import 'package:pollo_education/presentation/b2c/view/b2c_screen.dart';
+import 'package:pollo_education/presentation/course/view/my_course_screen.dart';
+import 'package:pollo_education/presentation/home/view/home_screen.dart';
 
 class HomeScreenContainer extends StatefulWidget {
   static const routeName = '/home-section';

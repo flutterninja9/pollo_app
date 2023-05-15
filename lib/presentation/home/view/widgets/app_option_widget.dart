@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pollo_education/design_system/r.dart';
-import 'package:pollo_education/home/view/widgets/app_option.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_option.dart';
 
 class AppOptionWidget extends StatelessWidget {
   const AppOptionWidget({

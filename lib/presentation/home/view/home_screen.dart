@@ -2,12 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pollo_education/app/app_routes.dart';
-import 'package:pollo_education/design_system/color.dart';
-import 'package:pollo_education/design_system/r.dart';
-import 'package:pollo_education/home/view/widgets/app_banner_container.dart';
-import 'package:pollo_education/home/view/widgets/app_banners.dart';
-import 'package:pollo_education/home/view/widgets/app_option_widget.dart';
-import 'package:pollo_education/profile/profile_screen.dart';
+import 'package:pollo_education/utils/design_system/color.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_banner_container.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_option_widget.dart';
+import 'package:pollo_education/presentation/profile/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';

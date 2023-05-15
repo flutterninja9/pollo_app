@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pollo_education/home/view/subject_detail_screen.dart';
-import 'package:pollo_education/home/view/widgets/app_banner_widget.dart';
-import 'package:pollo_education/home/view/widgets/app_banners.dart';
+import 'package:pollo_education/presentation/home/view/subject_detail_screen.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_banner_widget.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
 
 class AppBannersContainer extends StatefulWidget {
   const AppBannersContainer({

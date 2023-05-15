@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pollo_education/design_system/r.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
 
 class VideoPlayerTile extends StatelessWidget {
   const VideoPlayerTile(

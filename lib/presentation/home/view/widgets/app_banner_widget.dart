@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pollo_education/design_system/r.dart';
-import 'package:pollo_education/home/view/widgets/app_banners.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
 
 class AppBannerWidget extends StatelessWidget {
   const AppBannerWidget({

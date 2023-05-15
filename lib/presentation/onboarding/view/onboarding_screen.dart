@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pollo_education/design_system/r.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/di.dart';
-import 'package:pollo_education/onboarding/cubit/board_selection_cubit.dart';
-import 'package:pollo_education/onboarding/cubit/onboarding_cubit.dart';
-import 'package:pollo_education/onboarding/cubit/onboarding_state.dart';
-import 'package:pollo_education/onboarding/cubit/state_selection_cubit.dart';
-import 'package:pollo_education/onboarding/view/widgets/board_selection_view.dart';
-import 'package:pollo_education/onboarding/view/widgets/state_selection_view.dart';
+import 'package:pollo_education/presentation/onboarding/cubit/board_selection_cubit.dart';
+import 'package:pollo_education/presentation/onboarding/cubit/onboarding_cubit.dart';
+import 'package:pollo_education/presentation/onboarding/cubit/onboarding_state.dart';
+import 'package:pollo_education/presentation/onboarding/cubit/state_selection_cubit.dart';
+import 'package:pollo_education/presentation/onboarding/view/widgets/board_selection_view.dart';
+import 'package:pollo_education/presentation/onboarding/view/widgets/state_selection_view.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});

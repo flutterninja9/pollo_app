@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pollo_education/home/view/widgets/app_action.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_action.dart';
 
 class AppActionWidget extends StatelessWidget {
   const AppActionWidget({

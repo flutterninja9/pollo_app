@@ -1,9 +1,9 @@
-import 'package:pollo_education/constants.dart';
-import 'package:pollo_education/design_system/color.dart';
-import 'package:pollo_education/design_system/dimen.dart';
-import 'package:pollo_education/design_system/drawable.dart';
-import 'package:pollo_education/design_system/font.dart';
-import 'package:pollo_education/design_system/strings.dart';
+import 'package:pollo_education/utils/constants.dart';
+import 'package:pollo_education/utils/design_system/color.dart';
+import 'package:pollo_education/utils/design_system/dimen.dart';
+import 'package:pollo_education/utils/design_system/drawable.dart';
+import 'package:pollo_education/utils/design_system/font.dart';
+import 'package:pollo_education/utils/design_system/strings.dart';
 
 class R {
   R._();

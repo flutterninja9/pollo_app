@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:pollo_education/home/view/home_screen_container.dart';
-import 'package:pollo_education/profile/profile_screen.dart';
-import 'package:pollo_education/splash/splash_screen.dart';
+import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
+import 'package:pollo_education/presentation/profile/profile_screen.dart';
+import 'package:pollo_education/presentation/splash/splash_screen.dart';
 
 class AppRoutes {
   AppRoutes._();

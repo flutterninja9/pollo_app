@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:pollo_education/design_system/r.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/models/state_model.dart';
-import 'package:pollo_education/onboarding/cubit/onboarding_cubit.dart';
-import 'package:pollo_education/onboarding/cubit/state_selection_cubit.dart';
-import 'package:pollo_education/onboarding/view/widgets/state_tile.dart';
+import 'package:pollo_education/presentation/onboarding/cubit/onboarding_cubit.dart';
+import 'package:pollo_education/presentation/onboarding/cubit/state_selection_cubit.dart';
+import 'package:pollo_education/presentation/onboarding/view/widgets/state_tile.dart';
 import 'package:pollo_education/utils/asyncValue/async_value.dart';
 import 'package:pollo_education/utils/get_size.dart';
 

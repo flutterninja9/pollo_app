@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pollo_education/design_system/r.dart';
-import 'package:pollo_education/home/view/widgets/video_player_tile.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
+import 'package:pollo_education/presentation/home/view/widgets/video_player_tile.dart';
 
 class SubjectDetailScreen extends StatelessWidget {
   const SubjectDetailScreen({super.key});

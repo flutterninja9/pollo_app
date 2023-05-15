@@ -1,8 +1,8 @@
 import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
-import 'package:pollo_education/home/view/show_all_screen.dart';
-import 'package:pollo_education/home/view/widgets/app_action.dart';
-import 'package:pollo_education/home/view/widgets/app_action_widget.dart';
+import 'package:pollo_education/presentation/home/view/show_all_screen.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_action.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_action_widget.dart';
 
 class AppActionsContainer extends StatefulWidget {
   const AppActionsContainer({
