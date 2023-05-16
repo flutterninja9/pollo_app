@@ -1,18 +1,20 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pollo_education/resourses/remote/pollo_remote_data_source_impl.dart';
 import 'package:pollo_education/models/state_model.dart';
+import 'package:pollo_education/resourses/repository/i_pollo_app_repository.dart';
 import 'package:pollo_education/utils/asyncValue/async_value.dart';
 
 class StateSelectionCubit extends Cubit<AsyncValue<List<StateModel>>> {
-  final PolloRemoteDataSourceImpl remoteDataSource;
-  StateSelectionCubit(this.remoteDataSource)
-      : super(const AsyncValue.initial());
+  final IPolloAppRepository repository;
+  StateSelectionCubit(this.repository) : super(const AsyncValue.initial());
 
   Future<void> getStateList() async {
-    emit(const AsyncValue.loading());
     try {
-      final result = await remoteDataSource.getStateList();
-      emit(AsyncValue.loaded(result));
+      emit(const AsyncValue.loading());
+      final failureOrResult = await repository.getStateList();
+      failureOrResult.fold(
+        (failure) => emit(AsyncValue.failure(failure.toString())),
+        (result) => emit(AsyncValue.loaded(result)),
+      );
     } catch (e) {
       emit(AsyncValue.failure(e.toString()));
     }

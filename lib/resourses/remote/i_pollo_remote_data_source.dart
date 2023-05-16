@@ -1,9 +1,6 @@
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';
-import 'package:pollo_education/models/study_material_model.dart';
-import 'package:pollo_education/models/subject_model.dart';
-import 'package:pollo_education/models/video_model.dart';
 
 abstract class IPolloRemoteDataSource {
   Future<List<StateModel>> getStateList();
