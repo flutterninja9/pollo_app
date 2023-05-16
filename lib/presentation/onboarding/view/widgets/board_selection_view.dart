@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'package:pollo_education/utils/design_system/r.dart';
-import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pollo_education/di.dart';
 import 'package:pollo_education/models/board_model.dart';
-import 'package:pollo_education/models/state_model.dart';
+import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
 import 'package:pollo_education/presentation/onboarding/cubit/board_selection_cubit.dart';
-import 'package:pollo_education/presentation/onboarding/cubit/state_selection_cubit.dart';
 import 'package:pollo_education/presentation/onboarding/view/widgets/board_tile.dart';
-import 'package:pollo_education/presentation/onboarding/view/widgets/state_tile.dart';
 import 'package:pollo_education/utils/asyncValue/async_value.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -84,15 +82,11 @@ class _BoardSelectionViewState extends State<BoardSelectionView> {
                   child: FloatingActionButton(
                     onPressed: () async {
                       if (selectedIndex != -1) {
-                        final pref = await SharedPreferences.getInstance();
-                        pref.setString(
-                            'boardName', value.data[selectedIndex].name);
-
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (cotx) => const HomeScreenContainer()),
-                            (route) => false);
+                        await di<SharedPreferences>().setString(
+                          'boardName',
+                          value.data[selectedIndex].name,
+                        );
+                        di<GoRouter>().go(HomeScreenContainer.routeName);
                       }
                     },
                     child: FaIcon(

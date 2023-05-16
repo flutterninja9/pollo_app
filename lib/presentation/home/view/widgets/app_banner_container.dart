@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pollo_education/di.dart';
 import 'package:pollo_education/presentation/home/view/subject_detail_screen.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banner_widget.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
@@ -67,10 +69,7 @@ class _AppBannersContainerState extends State<AppBannersContainer> {
                 return AppBannerWidget(
                   banner: banner,
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SubjectDetailScreen()));
+                    di<GoRouter>().push(SubjectDetailScreen.routeName);
                   },
                 );
               },

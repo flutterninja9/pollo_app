@@ -1,10 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
-import 'package:pollo_education/utils/design_system/r.dart';
+import 'package:pollo_education/di.dart';
 import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -244,11 +246,7 @@ class SplashScreenState extends State<SplashScreenView> {
                       GestureDetector(
                         onTap: otp.length == 5
                             ? () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            OnboardingScreen()));
+                                di<GoRouter>().go(OnboardingScreen.routeName);
                               }
                             : null,
                         child: Container(

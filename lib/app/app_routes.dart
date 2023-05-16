@@ -4,6 +4,8 @@ import 'package:pollo_education/presentation/b2c/view/b2c_screen.dart';
 import 'package:pollo_education/presentation/course/view/my_course_screen.dart';
 import 'package:pollo_education/presentation/enterpreneur/view/enterpreneur_screen.dart';
 import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
+import 'package:pollo_education/presentation/home/view/show_all_screen.dart';
+import 'package:pollo_education/presentation/home/view/subject_detail_screen.dart';
 import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.dart';
 import 'package:pollo_education/presentation/profile/profile_screen.dart';
 import 'package:pollo_education/presentation/splash/splash_screen.dart';
@@ -11,7 +13,9 @@ import 'package:pollo_education/presentation/splash/splash_screen.dart';
 class AppRoutes {
   AppRoutes._();
 
-  static final routes = [
+  static final router = GoRouter(routes: _routes);
+
+  static final _routes = [
     GoRoute(
       path: SplashScreen.routeName,
       builder: (context, state) => const SplashScreen(),
@@ -43,6 +47,14 @@ class AppRoutes {
     GoRoute(
       path: OnboardingScreen.routeName,
       builder: (context, state) => const OnboardingScreen(),
+    ),
+    GoRoute(
+      path: ShowAllScreen.routeName,
+      builder: (context, state) => const ShowAllScreen(),
+    ),
+    GoRoute(
+      path: SubjectDetailScreen.routeName,
+      builder: (context, state) => const SubjectDetailScreen(),
     ),
   ];
 }

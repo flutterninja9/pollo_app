@@ -1,11 +1,13 @@
 import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pollo_education/di.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 
 class ShowAllScreen extends StatefulWidget {
   const ShowAllScreen({super.key});
-
+  static const routeName = '/show-all';
   @override
   State<ShowAllScreen> createState() => _ShowAllScreenState();
 }
@@ -207,7 +209,7 @@ class _ShowAllScreenState extends State<ShowAllScreen> {
                 child: IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {
-                    Navigator.pop(context);
+                    di<GoRouter>().pop();
                   },
                   icon: FaIcon(
                     FontAwesomeIcons.arrowLeft,

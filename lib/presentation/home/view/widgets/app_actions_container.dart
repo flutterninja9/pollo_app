@@ -1,5 +1,7 @@
 import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pollo_education/di.dart';
 import 'package:pollo_education/presentation/home/view/show_all_screen.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_action.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_action_widget.dart';
@@ -48,10 +50,7 @@ class _AppActionsContainerState extends State<AppActionsContainer> {
               const Spacer(),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ShowAllScreen()));
+                   di<GoRouter>().push(ShowAllScreen.routeName);
                 },
                 child: Container(
                   margin: const EdgeInsets.all(8),

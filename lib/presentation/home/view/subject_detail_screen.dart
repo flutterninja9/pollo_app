@@ -2,12 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pollo_education/di.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/presentation/home/view/widgets/video_player_tile.dart';
 
 class SubjectDetailScreen extends StatelessWidget {
   const SubjectDetailScreen({super.key});
-
+  static const routeName = '/subject-detail';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +85,7 @@ class SubjectDetailScreen extends StatelessWidget {
               child: IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {
-                    Navigator.pop(context);
+                   di<GoRouter>().pop();
                   },
                   icon: const FaIcon(
                     FontAwesomeIcons.arrowLeft,
