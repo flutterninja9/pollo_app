@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyCourseScreen extends StatefulWidget {
   const MyCourseScreen({super.key});
-
+  static const routeName = '/my-course';
   @override
   State<MyCourseScreen> createState() => _MyCourseScreenState();
 }

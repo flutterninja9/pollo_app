@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class B2BScreen extends StatefulWidget {
   const B2BScreen({super.key});
-
+  static const routeName = '/b2b';
   @override
   State<B2BScreen> createState() => _B2BScreenState();
 }

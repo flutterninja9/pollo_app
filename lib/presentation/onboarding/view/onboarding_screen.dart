@@ -11,7 +11,7 @@ import 'package:pollo_education/presentation/onboarding/view/widgets/state_selec
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
-
+  static const routeName = '/onboarding';
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [

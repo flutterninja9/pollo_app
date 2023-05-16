@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class EnterpreneurScreen extends StatefulWidget {
   const EnterpreneurScreen({super.key});
-
+  static const routeName = '/enterpreneur';
   @override
   State<EnterpreneurScreen> createState() => _EnterpreneurScreenState();
 }
