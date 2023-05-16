@@ -5,4 +5,5 @@ class Constant {
   static Constant get instance => _instance;
 
   final String fontFamily = 'Inter';
+  final String loggedInCacheKey = 'logged-in';
 }

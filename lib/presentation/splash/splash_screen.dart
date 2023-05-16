@@ -6,8 +6,10 @@ import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:pollo_education/di.dart';
 import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.dart';
+import 'package:pollo_education/utils/constants.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatelessWidget {
   static const routeName = '/';
@@ -35,7 +37,6 @@ class SplashScreenState extends State<SplashScreenView> {
   bool shake = false;
   bool valid = false;
   final OtpFieldController _otpController = OtpFieldController();
-  // final goRouter = ref.watch(goRouterProvider);
 
   void onCodeInput(String value) {
     if (otp.length < 5) {
@@ -147,9 +148,7 @@ class SplashScreenState extends State<SplashScreenView> {
                             setState(() {});
                           }
                         },
-                        onSaved: (value) {
-                          print(value);
-                        },
+                        onSaved: (value) {},
                         keyboardType: TextInputType.number,
                         maxLength: 10,
                       ),
@@ -245,7 +244,11 @@ class SplashScreenState extends State<SplashScreenView> {
                       const SizedBox(height: 32),
                       GestureDetector(
                         onTap: otp.length == 5
-                            ? () {
+                            ? () async {
+                                await di<SharedPreferences>().setBool(
+                                  Constant.instance.loggedInCacheKey,
+                                  true,
+                                );
                                 di<GoRouter>().go(OnboardingScreen.routeName);
                               }
                             : null,
