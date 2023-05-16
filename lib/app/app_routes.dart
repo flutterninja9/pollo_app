@@ -14,10 +14,7 @@ import 'package:pollo_education/presentation/profile/profile_screen.dart';
 import 'package:pollo_education/presentation/splash/splash_screen.dart';
 import 'package:pollo_education/utils/youtube_player/pollo_youtube_player.dart';
 
-class AppRoutes {
-  AppRoutes._();
-
-  static final router = GoRouter(routes: [
+final router = GoRouter(routes: [
     GoRoute(
       path: SplashScreen.routeName,
       builder: (context, state) => const SplashScreen(),
@@ -84,4 +81,3 @@ class AppRoutes {
       ),
     ),
   ]);
-}

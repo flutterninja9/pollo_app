@@ -5,7 +5,7 @@ import 'package:pollo_education/di.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  initDi();
   await dotenv.load();
+  await initDi();
   runApp(const PolloApp());
 }
