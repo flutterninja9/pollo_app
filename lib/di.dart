@@ -35,5 +35,5 @@ Future<void> initDi() async {
       () => PolloRepositoryImpl(di()));
 
   di.registerLazySingleton(() => ApiClient());
-  di.registerLazySingleton<GoRouter>(() => AppRoutes.router);
+  di.registerSingleton<GoRouter>(AppRoutes.router);
 }

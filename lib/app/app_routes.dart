@@ -17,9 +17,7 @@ import 'package:pollo_education/utils/youtube_player/pollo_youtube_player.dart';
 class AppRoutes {
   AppRoutes._();
 
-  static final router = GoRouter(routes: _routes);
-
-  static final _routes = [
+  static final router = GoRouter(routes: [
     GoRoute(
       path: SplashScreen.routeName,
       builder: (context, state) => const SplashScreen(),
@@ -85,5 +83,5 @@ class AppRoutes {
         chapter: state.queryParams['chapter']!,
       ),
     ),
-  ];
+  ]);
 }
