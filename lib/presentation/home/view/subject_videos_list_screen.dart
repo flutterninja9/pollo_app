@@ -3,29 +3,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/di.dart';
 import 'package:pollo_education/models/video_model.dart';
-import 'package:pollo_education/presentation/home/cubit/video_list_cubit.dart';
-import 'package:pollo_education/presentation/home/view/subject_videos_list_screen.dart';
+import 'package:pollo_education/presentation/home/cubit/subject_videos_cubit.dart';
 import 'package:pollo_education/utils/asyncValue/async_value.dart';
 import 'package:pollo_education/utils/youtube_player/pollo_youtube_player.dart';
 
-class VideoListScreen extends StatelessWidget {
-  const VideoListScreen({
+class SubjectVideoListScreen extends StatelessWidget {
+  const SubjectVideoListScreen({
     Key? key,
     required this.courseId,
+    required this.chapter,
   }) : super(key: key);
 
-  static const routeName = '/video-list-screen';
+  static const routeName = '/subject-video-list-screen';
   final String courseId;
+  final String chapter;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          di<VideoListCubit>()..getVideoListByCourseId(courseId),
+      create: (context) => di<SubjectVideosCubit>()
+        ..getVideoListByCourseIdAndChapter(courseId, chapter),
       child: Scaffold(
           appBar: AppBar(
-            title: const Text('Videos List'),
+            title: const Text('Subject Videos'),
           ),
-          body: BlocBuilder<VideoListCubit, AsyncValue<List<VideoModel>>>(
+          body: BlocBuilder<SubjectVideosCubit, AsyncValue<List<VideoModel>>>(
             builder: (context, state) {
               return state.map(
                 initial: (_) => const SizedBox(),
@@ -44,22 +45,15 @@ class VideoListScreen extends StatelessWidget {
                       return ListTile(
                         onTap: () {
                           di<GoRouter>().push(
-                            "${SubjectVideoListScreen.routeName}?course-id=${value.data[index].courseId}&chapter=${value.data[index].chapter}",
+                            "${PolloYoutubePlayer.routeName}?url=${value.data[index].ytLink}",
                           );
                         },
-                        trailing: IconButton(
-                          onPressed: () {
-                            di<GoRouter>().push(
-                              "${PolloYoutubePlayer.routeName}?url=${value.data[index].ytLink}",
-                            );
-                          },
-                          icon: const Icon(Icons.watch_later_outlined),
-                        ),
-                        leading: const Icon(Icons.book),
+                        leading: const Icon(Icons.play_arrow),
                         title: Text(value.data[index].title),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Text("Chapter: ${value.data[index].chapter}"),
                             Text(
                               "Description: ${value.data[index].description}",
                             ),

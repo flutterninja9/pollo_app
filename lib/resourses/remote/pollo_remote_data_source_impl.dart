@@ -53,19 +53,16 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     return data.map((e) => VideoModel.fromJson(e)).toList();
   }
 
-  // @override
-  // Future<List<VideoModel>> getVideoListByCourseIdAndChapter(
-  //     int courseId, String chapter) async {
-  //   final response =
-  //       await apiClient.get('/GetVideoListByCourseIdAndChapter/$courseId/$chapter');
-  //   if (response.data != null) {
-  //     return (response.data as List)
-  //         .map((e) => VideoModel.fromJson(e))
-  //         .toList();
-  //   } else {
-  //     throw Exception('No data received');
-  //   }
-  // }
+  @override
+  Future<List<VideoModel>> getVideoListByCourseIdAndChapter(
+    String courseId,
+    String chapter,
+  ) async {
+    final uri = makeUri('/api/GetVideoListByCourseIdAndChapter/$courseId/$chapter');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => VideoModel.fromJson(e)).toList();
+  }
 
   // @override
   // Future<List<VideoModel>> getVideoListByCourseIdChapterAndSubject(

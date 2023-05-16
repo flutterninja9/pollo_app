@@ -7,6 +7,7 @@ import 'package:pollo_education/presentation/home/view/home_screen_container.dar
 import 'package:pollo_education/presentation/home/view/show_all_screen.dart';
 import 'package:pollo_education/presentation/home/view/subject_detail_screen.dart';
 import 'package:pollo_education/presentation/home/view/subject_list_screen.dart';
+import 'package:pollo_education/presentation/home/view/subject_videos_list_screen.dart';
 import 'package:pollo_education/presentation/home/view/video_list_screen.dart';
 import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.dart';
 import 'package:pollo_education/presentation/profile/profile_screen.dart';
@@ -75,6 +76,13 @@ class AppRoutes {
       path: PolloYoutubePlayer.routeName,
       builder: (context, state) => PolloYoutubePlayer(
         ytUrl: state.queryParams['url']!,
+      ),
+    ),
+    GoRoute(
+      path: SubjectVideoListScreen.routeName,
+      builder: (context, state) => SubjectVideoListScreen(
+        courseId: state.queryParams['course-id']!,
+        chapter: state.queryParams['chapter']!,
       ),
     ),
   ];

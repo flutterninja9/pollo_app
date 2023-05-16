@@ -13,9 +13,12 @@ abstract class IPolloAppRepository {
       String boardName);
   Future<Either<Error, List<SubjectModel>>> getSubjectListByCourseId(
       String courseId);
-  Future<Either<Error, List<VideoModel>>> getVideoListByCourseId(String courseId);
-  // Future<Either<Error, List<VideoModel>>> getVideoListByCourseIdAndChapter(
-  //     int courseId, String chapter);
+  Future<Either<Error, List<VideoModel>>> getVideoListByCourseId(
+      String courseId);
+  Future<Either<Error, List<VideoModel>>> getVideoListByCourseIdAndChapter(
+    String courseId,
+    String chapter,
+  );
   // Future<Either<Error, List<VideoModel>>>
   //     getVideoListByCourseIdChapterAndSubject(
   //         int courseId, String chapter, String subjectName);

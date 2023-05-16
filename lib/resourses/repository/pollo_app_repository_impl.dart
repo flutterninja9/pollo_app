@@ -45,10 +45,10 @@ class PolloRepositoryImpl implements IPolloAppRepository {
         () => _polloRemoteDataSource.getVideoListByCourseId(courseId));
   }
 
-  // @override
-  // Future<Either<Error, List<VideoModel>>> getVideoListByCourseIdAndChapter(int courseId, String chapter) {
-  //   return _callbackHandler(() => _polloRemoteDataSource.getVideoListByCourseIdAndChapter(courseId, chapter));
-  // }
+  @override
+  Future<Either<Error, List<VideoModel>>> getVideoListByCourseIdAndChapter(String courseId, String chapter) {
+    return _callbackHandler(() => _polloRemoteDataSource.getVideoListByCourseIdAndChapter(courseId, chapter));
+  }
 
   // @override
   // Future<Either<Error, List<VideoModel>>> getVideoListByCourseIdChapterAndSubject(int courseId, String chapter, String subjectName) {

@@ -10,8 +10,10 @@ abstract class IPolloRemoteDataSource {
   Future<List<ClassModel>> getClassListByBoardName(String boardName);
   Future<List<SubjectModel>> getSubjectListByCourseId(String courseId);
   Future<List<VideoModel>> getVideoListByCourseId(String courseId);
-  // Future<List<VideoModel>> getVideoListByCourseIdAndChapter(
-  //     int courseId, String chapter);
+  Future<List<VideoModel>> getVideoListByCourseIdAndChapter(
+    String courseId,
+    String chapter,
+  );
   // Future<List<VideoModel>> getVideoListByCourseIdChapterAndSubject(
   //     int courseId, String chapter, String subjectName);
   // Future<List<StudyMaterialModel>> getMaterialListByCourseId(int courseId);
