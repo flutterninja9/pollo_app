@@ -257,7 +257,7 @@ class SplashScreenState extends State<SplashScreenView> {
                               borderRadius: BorderRadius.circular(8)),
                           child: Center(
                             child: Text(
-                              'Varify otp',
+                              'Verify Otp',
                               style: TextStyle(
                                   color: R.color.surface,
                                   fontSize: 18,

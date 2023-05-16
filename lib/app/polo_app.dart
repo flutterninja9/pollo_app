@@ -13,8 +13,7 @@ class PolloApp extends StatelessWidget {
       title: 'Polo Education',
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
-      routerDelegate: di<GoRouter>().routerDelegate,
-      routeInformationParser: di<GoRouter>().routeInformationParser,
+      routerConfig: di<GoRouter>(),
     );
   }
 }
