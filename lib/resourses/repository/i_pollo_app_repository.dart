@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';
-import 'package:pollo_education/models/study_material_model.dart';
 import 'package:pollo_education/models/subject_model.dart';
 import 'package:pollo_education/models/video_model.dart';
 
@@ -12,9 +11,9 @@ abstract class IPolloAppRepository {
       String stateName);
   Future<Either<Error, List<ClassModel>>> getClassListByBoardName(
       String boardName);
-  // Future<Either<Error, List<SubjectModel>>> getSubjectListByCourseId(
-  //     int courseId);
-  // Future<Either<Error, List<VideoModel>>> getVideoListByCourseId(int courseId);
+  Future<Either<Error, List<SubjectModel>>> getSubjectListByCourseId(
+      String courseId);
+  Future<Either<Error, List<VideoModel>>> getVideoListByCourseId(String courseId);
   // Future<Either<Error, List<VideoModel>>> getVideoListByCourseIdAndChapter(
   //     int courseId, String chapter);
   // Future<Either<Error, List<VideoModel>>>

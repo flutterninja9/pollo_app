@@ -8,21 +8,23 @@ part of 'video_model.dart';
 
 VideoModel _$VideoModelFromJson(Map<String, dynamic> json) => VideoModel(
       id: json['id'] as String,
-      name: json['name'] as String,
-      url: json['url'] as String,
-      thumbnail: json['thumbnail'] as String,
-      board: BoardModel.fromJson(json['board'] as Map<String, dynamic>),
-      subject: SubjectModel.fromJson(json['subject'] as Map<String, dynamic>),
-      classModel: ClassModel.fromJson(json['class'] as Map<String, dynamic>),
+      courseId: json['course_id'] as String,
+      subject: json['subject'] as String?,
+      chapter: json['chapter'] as String,
+      date: json['date'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      ytLink: json['link'] as String,
     );
 
 Map<String, dynamic> _$VideoModelToJson(VideoModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
-      'url': instance.url,
-      'thumbnail': instance.thumbnail,
-      'board': instance.board,
+      'course_id': instance.courseId,
+      'chapter': instance.chapter,
+      'date': instance.date,
+      'title': instance.title,
+      'description': instance.description,
       'subject': instance.subject,
-      'class': instance.classModel,
+      'link': instance.ytLink,
     };

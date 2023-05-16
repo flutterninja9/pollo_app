@@ -2,23 +2,29 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pollo_education/di.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
+import 'package:pollo_education/presentation/home/view/subject_list_screen.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_banner_container.dart';
+import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_option_widget.dart';
 import 'package:pollo_education/utils/asyncValue/async_value.dart';
 import 'package:pollo_education/utils/design_system/color.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
-import 'package:pollo_education/presentation/home/view/widgets/app_banner_container.dart';
-import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => di<GetClassCubit>()..getSubjectListByBoardName(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => di<GetClassCubit>()..getSubjectListByBoardName(),
+        ),
+      ],
       child: const HomeScreenView(),
     );
   }
@@ -307,7 +313,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                               builder: (context, state) {
                             return state.map(
                                 initial: (_) => const SizedBox(),
-                                loading: (_) => Container(color: Colors.grey),
+                                loading: (_) => const SizedBox(),
                                 loaded: (value) {
                                   return ListView.builder(
                                     scrollDirection: Axis.horizontal,
@@ -316,11 +322,17 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                       final classData = value.data[index];
 
                                       return AppOptionWidget(
-                                          classData: classData);
+                                        classData: classData,
+                                        onTap: (course) {
+                                          di<GoRouter>().push(
+                                            "${SubjectListScreen.routeName}?course-id=${course.courseId}",
+                                          );
+                                        },
+                                      );
                                     },
                                   );
                                 },
-                                failure: (e) => Text(e.toString()));
+                                failure: (e) => Text(e.reason));
                           })),
                       CarouselSlider(
                         items: [

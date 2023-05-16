@@ -1,9 +1,11 @@
 // Concrete implementation of data repository
 import 'package:dartz/dartz.dart';
-import 'package:pollo_education/resourses/remote/i_pollo_remote_data_source.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';
+import 'package:pollo_education/models/subject_model.dart';
+import 'package:pollo_education/models/video_model.dart';
+import 'package:pollo_education/resourses/remote/i_pollo_remote_data_source.dart';
 import 'package:pollo_education/resourses/repository/i_pollo_app_repository.dart';
 
 class PolloRepositoryImpl implements IPolloAppRepository {
@@ -29,15 +31,19 @@ class PolloRepositoryImpl implements IPolloAppRepository {
         () => _polloRemoteDataSource.getClassListByBoardName(boardName));
   }
 
-  // @override
-  // Future<Either<Error, List<SubjectModel>>> getSubjectListByCourseId(int courseId) {
-  //   return _callbackHandler(() => _polloRemoteDataSource.getSubjectListByCourseId(courseId));
-  // }
+  @override
+  Future<Either<Error, List<SubjectModel>>> getSubjectListByCourseId(
+      String courseId) {
+    return _callbackHandler(
+        () => _polloRemoteDataSource.getSubjectListByCourseId(courseId));
+  }
 
-  // @override
-  // Future<Either<Error, List<VideoModel>>> getVideoListByCourseId(int courseId) {
-  //   return _callbackHandler(() => _polloRemoteDataSource.getVideoListByCourseId(courseId));
-  // }
+  @override
+  Future<Either<Error, List<VideoModel>>> getVideoListByCourseId(
+      String courseId) {
+    return _callbackHandler(
+        () => _polloRemoteDataSource.getVideoListByCourseId(courseId));
+  }
 
   // @override
   // Future<Either<Error, List<VideoModel>>> getVideoListByCourseIdAndChapter(int courseId, String chapter) {

@@ -8,11 +8,15 @@ part of 'subject_model.dart';
 
 SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) => SubjectModel(
       id: json['id'] as String,
-      name: json['name'] as String,
+      name: json['subject_name'] as String,
+      courseId: json['course_id'] as String,
+      totalChapters: json['total_chapter'] as String,
     );
 
 Map<String, dynamic> _$SubjectModelToJson(SubjectModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'subject_name': instance.name,
+      'total_chapter': instance.totalChapters,
+      'course_id': instance.courseId,
     };

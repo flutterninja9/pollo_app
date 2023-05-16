@@ -6,9 +6,12 @@ import 'package:pollo_education/presentation/enterpreneur/view/enterpreneur_scre
 import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
 import 'package:pollo_education/presentation/home/view/show_all_screen.dart';
 import 'package:pollo_education/presentation/home/view/subject_detail_screen.dart';
+import 'package:pollo_education/presentation/home/view/subject_list_screen.dart';
+import 'package:pollo_education/presentation/home/view/video_list_screen.dart';
 import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.dart';
 import 'package:pollo_education/presentation/profile/profile_screen.dart';
 import 'package:pollo_education/presentation/splash/splash_screen.dart';
+import 'package:pollo_education/utils/youtube_player/pollo_youtube_player.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -53,8 +56,26 @@ class AppRoutes {
       builder: (context, state) => const ShowAllScreen(),
     ),
     GoRoute(
+      path: SubjectListScreen.routeName,
+      builder: (context, state) => SubjectListScreen(
+        courseId: state.queryParams['course-id']!,
+      ),
+    ),
+    GoRoute(
       path: SubjectDetailScreen.routeName,
       builder: (context, state) => const SubjectDetailScreen(),
+    ),
+    GoRoute(
+      path: VideoListScreen.routeName,
+      builder: (context, state) => VideoListScreen(
+        courseId: state.queryParams['course-id']!,
+      ),
+    ),
+    GoRoute(
+      path: PolloYoutubePlayer.routeName,
+      builder: (context, state) => PolloYoutubePlayer(
+        ytUrl: state.queryParams['url']!,
+      ),
     ),
   ];
 }

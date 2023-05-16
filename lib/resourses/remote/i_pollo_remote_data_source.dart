@@ -1,13 +1,15 @@
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';
+import 'package:pollo_education/models/subject_model.dart';
+import 'package:pollo_education/models/video_model.dart';
 
 abstract class IPolloRemoteDataSource {
   Future<List<StateModel>> getStateList();
   Future<List<BoardModel>> getBoardListByStateName(String stateName);
   Future<List<ClassModel>> getClassListByBoardName(String boardName);
-  // Future<List<SubjectModel>> getSubjectListByCourseId(int courseId);
-  // Future<List<VideoModel>> getVideoListByCourseId(int courseId);
+  Future<List<SubjectModel>> getSubjectListByCourseId(String courseId);
+  Future<List<VideoModel>> getVideoListByCourseId(String courseId);
   // Future<List<VideoModel>> getVideoListByCourseIdAndChapter(
   //     int courseId, String chapter);
   // Future<List<VideoModel>> getVideoListByCourseIdChapterAndSubject(
