@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';
+import 'package:pollo_education/models/study_material_model.dart';
 import 'package:pollo_education/models/subject_model.dart';
 import 'package:pollo_education/models/video_model.dart';
 import 'package:pollo_education/resourses/remote/i_pollo_remote_data_source.dart';
@@ -58,64 +59,58 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     String courseId,
     String chapter,
   ) async {
-    final uri = makeUri('/api/GetVideoListByCourseIdAndChapter/$courseId/$chapter');
+    final uri =
+        makeUri('/api/GetVideoListByCourseIdAndChapter/$courseId/$chapter');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
     return data.map((e) => VideoModel.fromJson(e)).toList();
   }
 
-  // @override
-  // Future<List<VideoModel>> getVideoListByCourseIdChapterAndSubject(
-  //     int courseId, String chapter, String subjectName) async {
-  //   final response = await apiClient.get(
-  //       '/GetVideoListByCourseIdAndChapterAndSubject/$courseId/$chapter/$subjectName');
-  //   if (response.data != null) {
-  //     return (response.data as List)
-  //         .map((e) => VideoModel.fromJson(e))
-  //         .toList();
-  //   } else {
-  //     throw Exception('No data received');
-  //   }
-  // }
+  @override
+  Future<List<VideoModel>> getVideoListByCourseIdChapterAndSubject(
+    String courseId,
+    String chapter,
+    String subjectName,
+  ) async {
+    final uri = makeUri(
+        '/api/GetVideoListByCourseIdAndChapterAndSubject/$courseId/$chapter/$subjectName');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => VideoModel.fromJson(e)).toList();
+  }
 
-  // @override
-  // Future<List<StudyMaterialModel>> getMaterialListByCourseId(
-  //     int courseId) async {
-  //   final response = await apiClient.get('/GetMaterialListByCourseId/$courseId');
-  //   if (response.data != null) {
-  //     return (response.data as List)
-  //         .map((e) => StudyMaterialModel.fromJson(e))
-  //         .toList();
-  //   } else {
-  //     throw Exception('No data received');
-  //   }
-  // }
+  @override
+  Future<List<StudyMaterialModel>> getMaterialListByCourseId(
+    String courseId,
+  ) async {
+    final uri = makeUri('/api/GetMaterialListByCourseId/$courseId');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => StudyMaterialModel.fromJson(e)).toList();
+  }
 
-  // @override
-  // Future<List<StudyMaterialModel>> getMaterialListByCourseIdAndChapter(
-  //     int courseId, String chapter) async {
-  //   final response = await apiClient
-  //       .get('/GetMaterialListByCourseIdAndChapter/$courseId/$chapter');
-  //   if (response.data != null) {
-  //     return (response.data as List)
-  //         .map((e) => StudyMaterialModel.fromJson(e))
-  //         .toList();
-  //   } else {
-  //     throw Exception('No data received');
-  //   }
-  // }
+  @override
+  Future<List<StudyMaterialModel>> getMaterialListByCourseIdAndChapter(
+    String courseId,
+    String chapter,
+  ) async {
+    final uri =
+        makeUri('/api/GetMaterialListByCourseIdAndChapter/$courseId/$chapter');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => StudyMaterialModel.fromJson(e)).toList();
+  }
 
-  // @override
-  // Future<List<StudyMaterialModel>> getMaterialListByCourseIdChapterAndSubject(
-  //     int courseId, String chapter, String subjectName) async {
-  //   final response = await apiClient.get(
-  //       '/GetMaterialListByCourseIdAndChapterAndSubject/$courseId/$chapter/$subjectName');
-  //   if (response.data != null) {
-  //     return (response.data as List)
-  //         .map((e) => StudyMaterialModel.fromJson(e))
-  //         .toList();
-  //   } else {
-  //     throw Exception('No data received');
-  //   }
-  // }
+  @override
+  Future<List<StudyMaterialModel>> getMaterialListByCourseIdChapterAndSubject(
+    String courseId,
+    String chapter,
+    String subjectName,
+  ) async {
+    final uri = makeUri(
+        '/api/GetMaterialListByCourseIdAndChapterAndSubject/$courseId/$chapter/$subjectName');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => StudyMaterialModel.fromJson(e)).toList();
+  }
 }
