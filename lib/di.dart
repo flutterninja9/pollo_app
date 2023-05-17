@@ -2,7 +2,9 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/app/app_routes.dart';
 import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
+import 'package:pollo_education/presentation/home/cubit/material_list_with_cid_chapter_subject.dart';
 import 'package:pollo_education/presentation/home/cubit/study_material_by_course_id_cubit.dart';
+import 'package:pollo_education/presentation/home/cubit/study_material_with_cid_and_chapter.dart';
 import 'package:pollo_education/presentation/home/cubit/subject_list_cubit.dart';
 import 'package:pollo_education/presentation/home/cubit/subject_videos_cubit.dart';
 import 'package:pollo_education/presentation/home/cubit/video_list_cubit.dart';
@@ -17,11 +19,11 @@ import 'package:pollo_education/resourses/repository/pollo_app_repository_impl.d
 import 'package:pollo_education/utils/api_client/api_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'presentation/home/cubit/study_material_with_cid_and_chapter.dart';
 
 final di = GetIt.instance;
 
 Future<void> initDi() async {
+  di.registerFactory(() => StudyMaterialWithCIdChapterAndSubjectCubit(di()));
   di.registerFactory(() => StudyMaterialWithCIdAndChapterCubit(di()));
   di.registerFactory(() => StudyMaterialWithCourseIdCubit(di()));
   di.registerFactory(() => VideosWithCidChapterSubjectCubit(di()));
