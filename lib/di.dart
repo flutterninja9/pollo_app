@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/app/app_routes.dart';
+import 'package:pollo_education/presentation/home/cubit/banners_cubit.dart';
 import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
 import 'package:pollo_education/presentation/home/cubit/material_list_with_cid_chapter_subject.dart';
 import 'package:pollo_education/presentation/home/cubit/study_material_by_course_id_cubit.dart';
@@ -23,6 +24,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 final di = GetIt.instance;
 
 Future<void> initDi() async {
+  di.registerFactory(() => BannersCubit(di(), di()));
   di.registerFactory(() => StudyMaterialWithCIdChapterAndSubjectCubit(di()));
   di.registerFactory(() => StudyMaterialWithCIdAndChapterCubit(di()));
   di.registerFactory(() => StudyMaterialWithCourseIdCubit(di()));
