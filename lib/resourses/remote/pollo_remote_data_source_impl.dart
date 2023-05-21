@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';
@@ -112,5 +113,45 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
     return data.map((e) => StudyMaterialModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<BannerModel>> getBottomBanners() async {
+    final uri = makeUri('/api/GetBottomBanner');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => BannerModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<BannerModel>> getMainBanners() async {
+    final uri = makeUri('/api/GetHomePageMainBanner');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => BannerModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<BannerModel>> getMiddleFirstBanners() async {
+    final uri = makeUri('/api/GetMiddleFirstBanner');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => BannerModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<BannerModel>> getSecondBanners() async {
+    final uri = makeUri('/api/GetMiddleSecondBanner');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => BannerModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<BannerModel>> getThirdBanners() async {
+    final uri = makeUri('/api/GetMiddleThirdBanner');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => BannerModel.fromJson(e)).toList();
   }
 }

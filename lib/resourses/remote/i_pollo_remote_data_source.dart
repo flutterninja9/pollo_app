@@ -1,3 +1,4 @@
+import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';
@@ -30,4 +31,9 @@ abstract class IPolloRemoteDataSource {
     String chapter,
     String subjectName,
   );
+  Future<List<BannerModel>> getMainBanners();
+  Future<List<BannerModel>> getMiddleFirstBanners();
+  Future<List<BannerModel>> getSecondBanners();
+  Future<List<BannerModel>> getThirdBanners();
+  Future<List<BannerModel>> getBottomBanners();
 }

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/state_model.dart';
@@ -40,4 +41,9 @@ abstract class IPolloAppRepository {
     String chapter,
     String subjectName,
   );
+  Future<Either<Error, List<BannerModel>>> getMainBanners();
+  Future<Either<Error, List<BannerModel>>> getMiddleFirstBanners();
+  Future<Either<Error, List<BannerModel>>> getSecondBanners();
+  Future<Either<Error, List<BannerModel>>> getThirdBanners();
+  Future<Either<Error, List<BannerModel>>> getBottomBanners();
 }
