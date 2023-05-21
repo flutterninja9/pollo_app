@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/scholarship_info.dart';
+import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
+import 'package:pollo_education/models/schlarship_model.dart';
 import 'package:pollo_education/models/state_model.dart';
 import 'package:pollo_education/models/study_material_model.dart';
 import 'package:pollo_education/models/subject_model.dart';
@@ -153,5 +156,59 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
     return data.map((e) => BannerModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<ClassModel>> getClassesByLevel(String level) async {
+     final uri = makeUri('/api/GetStateList');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => ClassModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<ClassModel>> getQuestionsWithClassAndExam(String className, String examId) async {
+     final uri = makeUri('/api/GetStateList');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => ClassModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<ScholarshipFeeAndDateModel> getScholarshipFeeAndDateByExamId(String examId) async {
+     final uri = makeUri('/api/GetStateList');
+    final response = await apiClient.get(uri);
+    return ScholarshipFeeAndDateModel.fromJson(jsonDecode(response.body)['data']);
+  }
+
+  @override
+  Future<ScholarshipInfo> getScholarshipInfoByExamId(String examId) async {
+      final uri = makeUri('/api/GetStateList');
+    final response = await apiClient.get(uri);
+    return ScholarshipInfo.fromJson(jsonDecode(response.body)['data']);
+  }
+
+  @override
+  Future<String> getScholarshipLevelAndClass() async {
+    final uri = makeUri('/api/GetStateList');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'].toString();
+    return data;
+  }
+
+  @override
+  Future<List<ScholarshipModel>> getScholarshipList() async {
+     final uri = makeUri('/api/GetStateList');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => ScholarshipModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<ScholarshipModel>> getScholarshipListByExamId(String examId) async {
+    final uri = makeUri('/api/GetStateList');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => ScholarshipModel.fromJson(e)).toList();
   }
 }
