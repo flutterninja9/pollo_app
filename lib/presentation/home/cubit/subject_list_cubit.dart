@@ -7,13 +7,17 @@ class SubjectListCubit extends Cubit<AsyncValue<List<SubjectModel>>> {
   SubjectListCubit(this._repository) : super(const AsyncValue.initial());
 
   final IPolloAppRepository _repository;
+  List<SubjectModel> subjects = [];
 
   Future<void> getSubjectListByCourseId(String courseId) async {
     emit(const AsyncValue.loading());
     final result = await _repository.getSubjectListByCourseId(courseId);
     result.fold(
       (error) => emit(AsyncValue.failure(error.toString())),
-      (data) => emit(AsyncValue.loaded(data)),
+      (data) {
+        subjects.addAll(data);
+        emit(AsyncValue.loaded(data));
+      },
     );
   }
 }

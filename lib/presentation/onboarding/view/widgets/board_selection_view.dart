@@ -43,13 +43,11 @@ class _BoardSelectionViewState extends State<BoardSelectionView> {
           return Stack(
             children: [
               Container(
-                height: getSize(context).height,
-                width: getSize(context).width,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 24),
                     Text(
                       'Select your board',
                       style: TextStyle(
@@ -65,6 +63,7 @@ class _BoardSelectionViewState extends State<BoardSelectionView> {
                           color: R.color.greenColor,
                           borderRadius: BorderRadius.circular(20)),
                     ),
+                    SizedBox(height: 16),
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(

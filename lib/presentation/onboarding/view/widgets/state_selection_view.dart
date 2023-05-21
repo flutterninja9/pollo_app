@@ -32,13 +32,11 @@ class _StateSelectionViewState extends State<StateSelectionView> {
           return Stack(
             children: [
               Container(
-                height: getSize(context).height,
-                width: getSize(context).width,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 24),
                     Text(
                       'Select your state',
                       style: TextStyle(
@@ -54,12 +52,10 @@ class _StateSelectionViewState extends State<StateSelectionView> {
                           color: R.color.greenColor,
                           borderRadius: BorderRadius.circular(20)),
                     ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: stateList(value.data),
-                        ),
-                      ),
+                    SizedBox(height: 16),
+                    Wrap(
+                      direction: Axis.horizontal,
+                      children: stateList(value.data),
                     )
                   ],
                 ),

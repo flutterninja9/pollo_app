@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/models/state_model.dart';
 
@@ -43,9 +42,23 @@ class StateTile extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          isSelected
-              ? FaIcon(FontAwesomeIcons.check, color: R.color.surface)
-              : const SizedBox(),
+          Container(
+            height: 20,
+            width: 20,
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                color: R.color.blueColor,
+                shape: BoxShape.circle,
+                border: Border.all(width: 2, color: R.color.surface)),
+            child: Container(
+              height: 10,
+              width: 10,
+              decoration: BoxDecoration(
+                color: isSelected ? R.color.greenColor : R.color.blueColor,
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
         ],
       ),
     );

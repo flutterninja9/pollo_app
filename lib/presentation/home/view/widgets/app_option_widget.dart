@@ -25,7 +25,7 @@ class AppOptionWidget extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            classData.classNAme,
+            "Class ${classData.classNAme}",
             style: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'OpenSans',

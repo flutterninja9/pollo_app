@@ -1,26 +1,53 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-part 'subject_model.g.dart';
-
-@JsonSerializable()
 class SubjectModel {
-  @JsonKey(name: "id")
-  final String id;
-  @JsonKey(name: "subject_name")
-  final String name;
-  @JsonKey(name: "total_chapter")
-  final String totalChapters;
-  @JsonKey(name: "course_id")
-  final String courseId;
+  String? subjectName;
+  String? totalChapter;
+  List<Chapter>? chapter;
 
-  SubjectModel({
-    required this.id,
-    required this.name,
-    required this.courseId,
-    required this.totalChapters,
-  });
+  SubjectModel({this.subjectName, this.totalChapter, this.chapter});
 
-  factory SubjectModel.fromJson(Map<String, dynamic> json) =>
-      _$SubjectModelFromJson(json);
+  SubjectModel.fromJson(Map<String, dynamic> json) {
+    subjectName = json['subject_name'];
+    totalChapter = json['total_chapter'];
+    if (json['chapter'] != null) {
+      chapter = <Chapter>[];
+      json['chapter'].forEach((v) {
+        chapter!.add(new Chapter.fromJson(v));
+      });
+    }
+  }
 
-  Map<String, dynamic> toJson() => _$SubjectModelToJson(this);
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['subject_name'] = this.subjectName;
+    data['total_chapter'] = this.totalChapter;
+    if (this.chapter != null) {
+      data['chapter'] = this.chapter!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Chapter {
+  String? title;
+  String? description;
+  String? chapter;
+  String? link;
+
+  Chapter({this.title, this.description, this.chapter, this.link});
+
+  Chapter.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    description = json['description'];
+    chapter = json['chapter'];
+    link = json['link'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['title'] = this.title;
+    data['description'] = this.description;
+    data['chapter'] = this.chapter;
+    data['link'] = this.link;
+    return data;
+  }
 }

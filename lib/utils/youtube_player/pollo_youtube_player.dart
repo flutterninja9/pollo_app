@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class PolloYoutubePlayer extends StatefulWidget {
@@ -36,20 +37,41 @@ class _PolloYoutubePlayerState extends State<PolloYoutubePlayer> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: YoutubePlayer(
-        controller: _controller,
-        bottomActions: [
-          CurrentPosition(
-            controller: _controller,
-          ),
-          ProgressBar(
-            isExpanded: true,
-            controller: _controller,
-          ),
-          FullScreenButton(
-            controller: _controller,
-          ),
-        ],
+      child: Container(
+        color: R.color.blueColor,
+        child: Column(
+          children: [
+            AspectRatio(
+              aspectRatio: 16 / 9,
+              child: YoutubePlayer(
+                controller: _controller,
+                bottomActions: [
+                  CurrentPosition(
+                    controller: _controller,
+                  ),
+                  ProgressBar(
+                    isExpanded: true,
+                    controller: _controller,
+                  ),
+                  FullScreenButton(
+                    controller: _controller,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
+            Expanded(
+                child: ListView.builder(
+                    itemCount: 4,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.all(16),
+                        height: 20,
+                        color: Colors.green,
+                      );
+                    }))
+          ],
+        ),
       ),
     );
   }

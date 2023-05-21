@@ -44,7 +44,7 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
 
   @override
   Future<List<SubjectModel>> getSubjectListByCourseId(String courseId) async {
-    final uri = makeUri('/api/GetSubjectListByCourseId/$courseId');
+    final uri = makeUri('/api/GetEveryThingByCourseId/$courseId');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
     return data.map((e) => SubjectModel.fromJson(e)).toList();
