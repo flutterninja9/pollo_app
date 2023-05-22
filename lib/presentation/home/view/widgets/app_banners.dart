@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:pollo_education/models/banner_model.dart';
 
 class AppBanners {
   final String header;
@@ -8,6 +9,12 @@ class AppBanners {
     required this.header,
     required this.banners,
   });
+
+  factory AppBanners.fromImages(String header, List<BannerModel> images) {
+    return AppBanners(
+        header: header,
+        banners: images.map((e) => AppBanner.fromBannerModel(e)).toList());
+  }
 
   @override
   String toString() => 'AppBanners(header: $header, banners: $banners)';
@@ -37,6 +44,14 @@ class AppBanner {
     this.imageUrl,
     this.title,
   });
+
+  factory AppBanner.fromBannerModel(BannerModel banner) {
+    return AppBanner(
+      imageUrl: banner.image,
+      title: banner.title,
+      subTitle: banner.description,
+    );
+  }
 
   @override
   String toString() =>

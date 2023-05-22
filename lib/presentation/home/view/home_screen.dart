@@ -5,9 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/di.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/presentation/home/cubit/banners_cubit.dart';
 import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
 import 'package:pollo_education/presentation/home/view/class_detail_screen.dart';
-import 'package:pollo_education/presentation/home/view/subject_list_screen.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banner_container.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_option_widget.dart';
@@ -16,7 +16,6 @@ import 'package:pollo_education/presentation/scholarship/scholarship_screen.dart
 import 'package:pollo_education/utils/asyncValue/async_value.dart';
 import 'package:pollo_education/utils/design_system/color.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
-import 'package:pollo_education/utils/get_size.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,6 +24,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => di<BannersCubit>()..getBanners(),
+        ),
         BlocProvider(
           create: (context) => di<GetClassCubit>()..getSubjectListByBoardName(),
         ),
@@ -65,81 +67,6 @@ class _HomeScreenViewState extends State<HomeScreenView> {
     _scrollController.dispose();
     super.dispose();
   }
-
-  final appBannerOne = AppBanners(
-    header: "Recommended Subjects",
-    banners: [
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl: 'https://picsum.photos/seed/picsum/200/300',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-    ],
-  );
-  final appBannersTwo = AppBanners(
-    header: "Newly Released Subjects",
-    banners: [
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl:
-              'https://plus.unsplash.com/premium_photo-1681248156365-cbe0295dbbe0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-    ],
-  );
-  final appBannersThree = AppBanners(
-    header: "Check out these offers",
-    banners: [
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl:
-              'https://plus.unsplash.com/premium_photo-1661767552224-ef72bb6b671f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1581078426770-6d336e5de7bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-      AppBanner(
-          imageUrl:
-              'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-          title: "General Knowledge",
-          subTitle: '10 videos'),
-    ],
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +122,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                   borderSide:
                                       BorderSide(color: Colors.transparent),
                                 ),
-                                suffixIcon: Icon(Icons.search)),
+                                suffixIcon: const Icon(Icons.search)),
                           ),
                         ),
                       ),
@@ -219,7 +146,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -266,54 +193,104 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                       },
                                       failure: (e) => Text(e.reason));
                                 })),
-                            CarouselSlider(
-                              items: [
-                                Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 16, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    image: const DecorationImage(
-                                      image: NetworkImage(
-                                          "https://plus.unsplash.com/premium_photo-1661767552224-ef72bb6b671f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGVkdWNhdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                              options: CarouselOptions(
-                                viewportFraction: 1,
-                                height: 180.0,
-                                autoPlay: true,
-                                autoPlayCurve: Curves.fastOutSlowIn,
-                                enableInfiniteScroll: true,
-                                autoPlayAnimationDuration:
-                                    const Duration(milliseconds: 800),
-                              ),
+                            BlocBuilder<BannersCubit, HomePageBannersState>(
+                              builder: (context, state) {
+                                return state.top.map(
+                                  initial: (_) => const SizedBox.shrink(),
+                                  loading: (_) => const SizedBox.shrink(),
+                                  loaded: (val) {
+                                    final images = val.data;
+                                    return CarouselSlider(
+                                      items: [
+                                        for (final imageData in images)
+                                          Container(
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 16, vertical: 4),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                    imageData.image),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                      options: CarouselOptions(
+                                        viewportFraction: 1,
+                                        height: 180.0,
+                                        autoPlay: true,
+                                        autoPlayCurve: Curves.fastOutSlowIn,
+                                        enableInfiniteScroll: true,
+                                        autoPlayAnimationDuration:
+                                            const Duration(milliseconds: 800),
+                                      ),
+                                    );
+                                  },
+                                  failure: (f) => Text(f.reason),
+                                );
+                              },
                             ),
                             const SizedBox(height: 16),
-                            Container(
-                              padding: const EdgeInsets.only(left: 16),
-                              child: AppBannersContainer(
-                                banners: appBannerOne,
-                                onClickSeeAll: () {},
-                              ),
+                            BlocBuilder<BannersCubit, HomePageBannersState>(
+                              builder: (context, state) {
+                                return state.first.map(
+                                  initial: (_) => SizedBox.fromSize(),
+                                  loading: (_) => SizedBox.fromSize(),
+                                  loaded: (value) {
+                                    return Container(
+                                      padding: const EdgeInsets.only(left: 16),
+                                      child: AppBannersContainer(
+                                        banners: AppBanners.fromImages(
+                                            "Heading One", value.data),
+                                        onClickSeeAll: () {},
+                                      ),
+                                    );
+                                  },
+                                  failure: (f) => Text(f.reason),
+                                );
+                              },
                             ),
                             const SizedBox(height: 16),
-                            Container(
-                              padding: const EdgeInsets.only(left: 16),
-                              child: AppBannersContainer(
-                                banners: appBannersTwo,
-                                onClickSeeAll: () {},
-                              ),
+                            BlocBuilder<BannersCubit, HomePageBannersState>(
+                              builder: (context, state) {
+                                return state.second.map(
+                                  initial: (_) => SizedBox.fromSize(),
+                                  loading: (_) => SizedBox.fromSize(),
+                                  loaded: (value) {
+                                    return Container(
+                                      padding: const EdgeInsets.only(left: 16),
+                                      child: AppBannersContainer(
+                                        banners: AppBanners.fromImages(
+                                            "Heading One", value.data),
+                                        onClickSeeAll: () {},
+                                      ),
+                                    );
+                                  },
+                                  failure: (f) => Text(f.reason),
+                                );
+                              },
                             ),
                             const SizedBox(height: 16),
-                            Container(
-                              padding: const EdgeInsets.only(left: 16),
-                              child: AppBannersContainer(
-                                banners: appBannersThree,
-                                onClickSeeAll: () {},
-                              ),
+                            BlocBuilder<BannersCubit, HomePageBannersState>(
+                              builder: (context, state) {
+                                return state.third.map(
+                                  initial: (_) => SizedBox.fromSize(),
+                                  loading: (_) => SizedBox.fromSize(),
+                                  loaded: (value) {
+                                    return Container(
+                                      padding: const EdgeInsets.only(left: 16),
+                                      child: AppBannersContainer(
+                                        banners: AppBanners.fromImages(
+                                            "Heading One", value.data),
+                                        onClickSeeAll: () {},
+                                      ),
+                                    );
+                                  },
+                                  failure: (f) => Text(f.reason),
+                                );
+                              },
                             ),
                             const SizedBox(height: 16),
                           ],
@@ -325,7 +302,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
               ),
               showSelectState
                   ? Container(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       margin:
                           const EdgeInsets.only(left: 36, top: 36, right: 130),
                       decoration: BoxDecoration(
@@ -360,7 +337,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                         ],
                       ),
                     )
-                  : SizedBox()
+                  : const SizedBox()
             ],
           ),
         ),
