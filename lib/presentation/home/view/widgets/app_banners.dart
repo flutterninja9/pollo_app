@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:pollo_education/app/app_config.dart';
 import 'package:pollo_education/models/banner_model.dart';
 
 class AppBanners {
@@ -47,9 +48,9 @@ class AppBanner {
 
   factory AppBanner.fromBannerModel(BannerModel banner) {
     return AppBanner(
-      imageUrl: banner.image,
-      title: banner.title,
-      subTitle: banner.description,
+      imageUrl: AppConfig.fileUrl + banner.image,
+      title: banner.category,
+      subTitle: banner.caption,
     );
   }
 

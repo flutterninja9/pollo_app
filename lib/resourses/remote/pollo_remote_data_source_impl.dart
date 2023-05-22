@@ -123,7 +123,7 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     final uri = makeUri('/api/GetBottomBanner');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
-    return data.map((e) => BannerModel.fromJson(e)).toList();
+    return data.map((e) => BannerModel.fromMap(e)).toList();
   }
 
   @override
@@ -131,7 +131,7 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     final uri = makeUri('/api/GetHomePageMainBanner');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
-    return data.map((e) => BannerModel.fromJson(e)).toList();
+    return data.map((e) => BannerModel.fromMap(e)).toList();
   }
 
   @override
@@ -139,7 +139,7 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     final uri = makeUri('/api/GetMiddleFirstBanner');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
-    return data.map((e) => BannerModel.fromJson(e)).toList();
+    return data.map((e) => BannerModel.fromMap(e)).toList();
   }
 
   @override
@@ -147,7 +147,7 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     final uri = makeUri('/api/GetMiddleSecondBanner');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
-    return data.map((e) => BannerModel.fromJson(e)).toList();
+    return data.map((e) => BannerModel.fromMap(e)).toList();
   }
 
   @override
@@ -155,7 +155,7 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     final uri = makeUri('/api/GetMiddleThirdBanner');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
-    return data.map((e) => BannerModel.fromJson(e)).toList();
+    return data.map((e) => BannerModel.fromMap(e)).toList();
   }
 
   @override

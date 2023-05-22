@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pollo_education/app/app_config.dart';
 import 'package:pollo_education/di.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/presentation/home/cubit/banners_cubit.dart';
@@ -211,7 +212,8 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                   BorderRadius.circular(8.0),
                                               image: DecorationImage(
                                                 image: NetworkImage(
-                                                    imageData.image),
+                                                    AppConfig.fileUrl +
+                                                        imageData.image),
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
