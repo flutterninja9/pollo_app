@@ -13,13 +13,13 @@ import 'package:pollo_education/presentation/home/cubit/videos_with_cid_chapter_
 import 'package:pollo_education/presentation/onboarding/cubit/board_selection_cubit.dart';
 import 'package:pollo_education/presentation/onboarding/cubit/onboarding_cubit.dart';
 import 'package:pollo_education/presentation/onboarding/cubit/state_selection_cubit.dart';
+import 'package:pollo_education/presentation/scholarship/cubit/get_scholarships_cubit.dart';
 import 'package:pollo_education/resourses/remote/i_pollo_remote_data_source.dart';
 import 'package:pollo_education/resourses/remote/pollo_remote_data_source_impl.dart';
 import 'package:pollo_education/resourses/repository/i_pollo_app_repository.dart';
 import 'package:pollo_education/resourses/repository/pollo_app_repository_impl.dart';
 import 'package:pollo_education/utils/api_client/api_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 final di = GetIt.instance;
 
@@ -36,6 +36,7 @@ Future<void> initDi() async {
   di.registerFactory(() => BoardSelectionCubit(di()));
   di.registerFactory(() => OnboardingCubit());
   di.registerFactory(() => GetClassCubit(di(), di()));
+  di.registerFactory(() => GetScholarshipsCubit(di()));
 
   //initiate repositories
   final sl = await SharedPreferences.getInstance();
