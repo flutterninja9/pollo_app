@@ -178,8 +178,25 @@ class ScholarshipScreenView extends StatelessWidget {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.end,
+                                                CrossAxisAlignment.center,
                                             children: [
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8,
+                                                        vertical: 6),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: R.color.greenColor),
+                                                child: Text(
+                                                  '₹ ${scholarships[index].fees}',
+                                                  style: TextStyle(
+                                                    color: R.color.surface,
+                                                  ),
+                                                ),
+                                              ),
                                               TextButton(
                                                 style: TextButton.styleFrom(
                                                     elevation: 20,
@@ -207,13 +224,6 @@ class ScholarshipScreenView extends StatelessWidget {
                                                       TextStyle(fontSize: 14),
                                                 ),
                                               ),
-                                              IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons.arrow_forward,
-                                                    color: R.color.surface
-                                                        .withOpacity(0.5),
-                                                  ))
                                             ],
                                           ),
                                         ),
