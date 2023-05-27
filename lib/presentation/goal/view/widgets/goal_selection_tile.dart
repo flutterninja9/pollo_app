@@ -1,7 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:pollo_education/utils/design_system/r.dart';
 
 class GoalSelectionTile extends StatelessWidget {
@@ -22,12 +21,13 @@ class GoalSelectionTile extends StatelessWidget {
           color: R.color.blueColor, borderRadius: BorderRadius.circular(8)),
       child: ExpandablePanel(
         theme: ExpandableThemeData(
-            iconPadding: const EdgeInsets.all(16),
-            tapHeaderToExpand: true,
-            iconColor: R.color.surface,
-            hasIcon: true,
-            expandIcon: FontAwesomeIcons.plus,
-            collapseIcon: FontAwesomeIcons.minus),
+          iconPadding: const EdgeInsets.all(16),
+          tapHeaderToExpand: true,
+          iconColor: R.color.surface,
+          hasIcon: true,
+          expandIcon: FontAwesomeIcons.plus,
+          collapseIcon: FontAwesomeIcons.minus,
+        ),
         header: Padding(
           padding: const EdgeInsets.all(16),
           child: Text(

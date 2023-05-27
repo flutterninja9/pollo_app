@@ -149,9 +149,13 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                               children: [
                                 for (final item in value.data)
                                   StateSelectionTile(
-                                    // capitalize first only
                                     title: item.level,
                                     expandedWidget: const SizedBox(),
+                                    onTap: () {
+                                      di<GoRouter>().push(
+                                        DigitalCoachingScreen.routeName,
+                                      );
+                                    },
                                   )
                               ],
                             ),
