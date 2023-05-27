@@ -169,7 +169,7 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                   },
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  margin: const EdgeInsets.only(left: 16),
                   child: GoalListTile(
                     onTap: () {
                       di<GoRouter>().push(ComputerEducationScreen.routeName);
@@ -178,7 +178,7 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  margin: const EdgeInsets.only(left: 16),
                   child: GoalListTile(
                     onTap: () {
                       di<GoRouter>().push(BasicCourseScreen.routeName);
@@ -187,7 +187,7 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  margin: const EdgeInsets.only(left: 16),
                   child: GoalListTile(
                     onTap: () {
                       di<GoRouter>().push(DigitalCoachingScreen.routeName);
