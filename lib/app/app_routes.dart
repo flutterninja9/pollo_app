@@ -3,11 +3,11 @@ import 'package:pollo_education/presentation/Enterpreneur/view/enterpreneur_scre
 import 'package:pollo_education/presentation/b2b/view/b2b_screen.dart';
 import 'package:pollo_education/presentation/b2c/view/b2c_screen.dart';
 import 'package:pollo_education/presentation/course/view/my_course_screen.dart';
+import 'package:pollo_education/presentation/goal/goals_screen.dart';
 import 'package:pollo_education/presentation/home/view/class_detail_screen.dart';
 import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
 import 'package:pollo_education/presentation/home/view/show_all_screen.dart';
 import 'package:pollo_education/presentation/home/view/subject_detail_screen.dart';
-import 'package:pollo_education/presentation/home/view/subject_list_screen.dart';
 import 'package:pollo_education/presentation/home/view/subject_videos_list_screen.dart';
 import 'package:pollo_education/presentation/home/view/video_list_screen.dart';
 import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.dart';
@@ -85,5 +85,9 @@ final router = GoRouter(routes: [
   GoRoute(
     path: ScholarShipScreen.routeName,
     builder: (context, state) => const ScholarShipScreen(),
+  ),
+  GoRoute(
+    path: GoalsScreen.routeName,
+    builder: (context, state) => const GoalsScreen(),
   )
 ]);

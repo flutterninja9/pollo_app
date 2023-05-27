@@ -5,16 +5,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/app/app_config.dart';
 import 'package:pollo_education/di.dart';
-import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/presentation/goal/goals_screen.dart';
 import 'package:pollo_education/presentation/home/cubit/banners_cubit.dart';
 import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
-import 'package:pollo_education/presentation/home/view/class_detail_screen.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banner_container.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_option_widget.dart';
 import 'package:pollo_education/presentation/profile/profile_screen.dart';
 import 'package:pollo_education/presentation/scholarship/scholarship_screen.dart';
-import 'package:pollo_education/utils/asyncValue/async_value.dart';
 import 'package:pollo_education/utils/design_system/color.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 
@@ -53,6 +51,29 @@ class _HomeScreenViewState extends State<HomeScreenView> {
   PColor pColor = PColor.instance;
   bool showSelectState = false;
 
+  static const listOfAppOptions = <AppOptionContainer>[
+    AppOptionContainer(
+      label: "Scholarship",
+      icon: Icon(Icons.school),
+    ),
+    AppOptionContainer(
+      label: "Result",
+      icon: Icon(Icons.analytics),
+    ),
+    AppOptionContainer(
+      label: "Learning",
+      icon: Icon(Icons.book),
+    ),
+    AppOptionContainer(
+      label: "Quiz",
+      icon: Icon(Icons.computer),
+    ),
+    AppOptionContainer(
+      label: "Digital Coaching",
+      icon: Icon(Icons.table_chart),
+    ),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -88,8 +109,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          showSelectState = !showSelectState;
-                          setState(() {});
+                          di<GoRouter>().push(GoalsScreen.routeName);
                         },
                         icon: FaIcon(
                           FontAwesomeIcons.bullseye,
@@ -163,37 +183,6 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            Container(
-                                height: 40,
-                                margin: const EdgeInsets.only(
-                                    left: 16, top: 16, bottom: 16),
-                                alignment: Alignment.center,
-                                child: BlocBuilder<GetClassCubit,
-                                        AsyncValue<List<ClassModel>>>(
-                                    builder: (context, state) {
-                                  return state.map(
-                                      initial: (_) => const SizedBox(),
-                                      loading: (_) => const SizedBox(),
-                                      loaded: (value) {
-                                        return ListView.builder(
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: value.data.length,
-                                          itemBuilder: (context, index) {
-                                            final classData = value.data[index];
-
-                                            return AppOptionWidget(
-                                              classData: classData,
-                                              onTap: (course) {
-                                                di<GoRouter>().push(
-                                                  "${ClassDetailScreen.routeName}?course-id=${course.courseId}",
-                                                );
-                                              },
-                                            );
-                                          },
-                                        );
-                                      },
-                                      failure: (e) => Text(e.reason));
-                                })),
                             BlocBuilder<BannersCubit, HomePageBannersState>(
                               builder: (context, state) {
                                 return state.top.map(
@@ -235,20 +224,36 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                               },
                             ),
                             const SizedBox(height: 16),
+                            Container(
+                                height: 100,
+                                margin: const EdgeInsets.only(
+                                    left: 16, top: 16, bottom: 16),
+                                alignment: Alignment.center,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: listOfAppOptions.length,
+                                  itemBuilder: (context, index) {
+                                    final option = listOfAppOptions[index];
+
+                                    return AppOptionWidget(
+                                      option: option,
+                                      onTap: () {},
+                                    );
+                                  },
+                                )),
                             BlocBuilder<BannersCubit, HomePageBannersState>(
                               builder: (context, state) {
                                 return state.first.map(
                                   initial: (_) => SizedBox.fromSize(),
                                   loading: (_) => SizedBox.fromSize(),
                                   loaded: (value) {
-                                    return Container(
-                                      padding: const EdgeInsets.only(left: 16),
-                                      child: AppBannersContainer(
+                                    final images = value.data;
+                                    return AppBannersContainer(
                                         banners: AppBanners.fromImages(
-                                            "Heading One", value.data),
-                                        onClickSeeAll: () {},
-                                      ),
-                                    );
+                                          "Scholarship",
+                                          images,
+                                        ),
+                                        onClickSeeAll: () {});
                                   },
                                   failure: (f) => Text(f.reason),
                                 );
@@ -261,14 +266,13 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                   initial: (_) => SizedBox.fromSize(),
                                   loading: (_) => SizedBox.fromSize(),
                                   loaded: (value) {
-                                    return Container(
-                                      padding: const EdgeInsets.only(left: 16),
-                                      child: AppBannersContainer(
+                                    final images = value.data;
+                                    return AppBannersContainer(
                                         banners: AppBanners.fromImages(
-                                            "Heading One", value.data),
-                                        onClickSeeAll: () {},
-                                      ),
-                                    );
+                                          "State board",
+                                          images,
+                                        ),
+                                        onClickSeeAll: () {});
                                   },
                                   failure: (f) => Text(f.reason),
                                 );
@@ -281,14 +285,13 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                   initial: (_) => SizedBox.fromSize(),
                                   loading: (_) => SizedBox.fromSize(),
                                   loaded: (value) {
-                                    return Container(
-                                      padding: const EdgeInsets.only(left: 16),
-                                      child: AppBannersContainer(
+                                    final images = value.data;
+                                    return AppBannersContainer(
                                         banners: AppBanners.fromImages(
-                                            "Heading One", value.data),
-                                        onClickSeeAll: () {},
-                                      ),
-                                    );
+                                          "Computer Education",
+                                          images,
+                                        ),
+                                        onClickSeeAll: () {});
                                   },
                                   failure: (f) => Text(f.reason),
                                 );
@@ -371,4 +374,29 @@ class _HomeScreenViewState extends State<HomeScreenView> {
       ),
     );
   }
+}
+
+class AppOptionContainer {
+  final String label;
+  final Icon icon;
+
+  const AppOptionContainer({
+    required this.label,
+    required this.icon,
+  });
+
+  @override
+  String toString() => 'AppOptionContainer(label: $label, icon: $icon)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is AppOptionContainer &&
+        other.label == label &&
+        other.icon == icon;
+  }
+
+  @override
+  int get hashCode => label.hashCode ^ icon.hashCode;
 }
