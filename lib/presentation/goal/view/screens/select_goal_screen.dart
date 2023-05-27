@@ -7,8 +7,9 @@ import 'package:pollo_education/presentation/goal/cubit/goals_cubit.dart';
 import 'package:pollo_education/presentation/goal/view/screens/basic_course_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/computer_education_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/digital_coaching_screen.dart';
+import 'package:pollo_education/presentation/goal/view/widgets/goal_list_tile.dart';
 import 'package:pollo_education/presentation/goal/view/widgets/goal_selection_tile.dart';
-import 'package:pollo_education/presentation/goal/view/widgets/state_selection_tile.dart';
+import 'package:pollo_education/presentation/scholarship/scholarship_screen.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
 
@@ -110,9 +111,10 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                             child: Column(
                               children: [
                                 for (final item in value.data)
-                                  StateSelectionTile(
+                                  GoalListTile(
+                                    fontSize: 16,
+                                    onTap: () {},
                                     title: item.state,
-                                    expandedWidget: const SizedBox(),
                                     imgUrl:
                                         'https://polloeducation.tunajifoundation.com/public/storage/upload/${item.image}',
                                   )
@@ -148,12 +150,12 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                             child: Column(
                               children: [
                                 for (final item in value.data)
-                                  StateSelectionTile(
+                                  GoalListTile(
+                                    fontSize: 16,
                                     title: item.level,
-                                    expandedWidget: const SizedBox(),
                                     onTap: () {
                                       di<GoRouter>().push(
-                                        DigitalCoachingScreen.routeName,
+                                        ScholarShipScreen.routeName,
                                       );
                                     },
                                   )
@@ -166,67 +168,31 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                     );
                   },
                 ),
-                GestureDetector(
-                  onTap: () {
-                    di<GoRouter>().push(ComputerEducationScreen.routeName);
-                  },
-                  child: Container(
-                    width: getSize(context).width,
-                    padding: const EdgeInsets.all(16),
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                        color: R.color.blueColor,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Text(
-                      "COMPUTER EDUCATION",
-                      style: TextStyle(
-                          color: R.color.surface,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: GoalListTile(
+                    onTap: () {
+                      di<GoRouter>().push(ComputerEducationScreen.routeName);
+                    },
+                    title: "COMPUTER EDUCATION",
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    di<GoRouter>().push(BasicCourseScreen.routeName);
-                  },
-                  child: Container(
-                    width: getSize(context).width,
-                    padding: const EdgeInsets.all(16),
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                        color: R.color.blueColor,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Text(
-                      "BASIC COURSE",
-                      style: TextStyle(
-                          color: R.color.surface,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: GoalListTile(
+                    onTap: () {
+                      di<GoRouter>().push(BasicCourseScreen.routeName);
+                    },
+                    title: "BASIC COURSE",
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    di<GoRouter>().push(DigitalCoachingScreen.routeName);
-                  },
-                  child: Container(
-                    width: getSize(context).width,
-                    padding: const EdgeInsets.all(16),
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                        color: R.color.blueColor,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Text(
-                      "DIGITAL COACHING CENTER",
-                      style: TextStyle(
-                          color: R.color.surface,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: GoalListTile(
+                    onTap: () {
+                      di<GoRouter>().push(DigitalCoachingScreen.routeName);
+                    },
+                    title: "DIGITAL COACHING CENTER",
                   ),
                 ),
               ],
