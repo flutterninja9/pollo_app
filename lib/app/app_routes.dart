@@ -7,7 +7,6 @@ import 'package:pollo_education/presentation/goal/view/screens/basic_course_scre
 import 'package:pollo_education/presentation/goal/view/screens/computer_education_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/digital_coaching_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/select_goal_screen.dart';
-import 'package:pollo_education/presentation/goal/goals_screen.dart';
 import 'package:pollo_education/presentation/home/view/class_detail_screen.dart';
 import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
 import 'package:pollo_education/presentation/home/view/show_all_screen.dart';
