@@ -7,6 +7,7 @@ import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
+import 'package:pollo_education/models/scholarship_level_and_class_model.dart';
 import 'package:pollo_education/models/scholarship_model.dart';
 import 'package:pollo_education/models/state_model.dart';
 import 'package:pollo_education/models/study_material_model.dart';
@@ -156,7 +157,7 @@ class PolloRepositoryImpl implements IPolloAppRepository {
   }
 
   @override
-  Future<Either<Error, String>> getScholarshipLevelAndClass() async {
+  Future<Either<Error, List<ScholarshipLevelAndClassModel>>> getScholarshipLevelAndClass() async {
     return _callbackHandler(
         () => _polloRemoteDataSource.getScholarshipLevelAndClass());
   }
