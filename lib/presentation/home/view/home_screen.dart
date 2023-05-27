@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pollo_education/app/app_config.dart';
 import 'package:pollo_education/di.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/presentation/goal/view/screens/select_goal_screen.dart';
 import 'package:pollo_education/presentation/home/cubit/banners_cubit.dart';
 import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
 import 'package:pollo_education/presentation/home/view/class_detail_screen.dart';
@@ -88,8 +89,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          showSelectState = !showSelectState;
-                          setState(() {});
+                          di<GoRouter>().push(SelectGoalScreen.routeName);
                         },
                         icon: FaIcon(
                           FontAwesomeIcons.bullseye,

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:pollo_education/di.dart';
+import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
 import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.dart';
 import 'package:pollo_education/utils/constants.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
@@ -249,7 +250,8 @@ class SplashScreenState extends State<SplashScreenView> {
                                   Constant.instance.loggedInCacheKey,
                                   true,
                                 );
-                                di<GoRouter>().go(OnboardingScreen.routeName);
+                                di<GoRouter>()
+                                    .go(HomeScreenContainer.routeName);
                               }
                             : null,
                         child: Container(
