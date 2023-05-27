@@ -4,4 +4,5 @@ class AppConfig {
   AppConfig._();
 
   static final String env = dotenv.env['ENV']!;
+  static final String fileUrl = dotenv.env['FILE_URL']!;
 }

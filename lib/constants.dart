@@ -1,8 +1,0 @@
-class Constant {
-  Constant._();
-
-  static final _instance = Constant._();
-  static Constant get instance => _instance;
-
-  final String fontFamily = 'OpenSans';
-}
