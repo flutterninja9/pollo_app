@@ -125,11 +125,42 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                     );
                   },
                 ),
-                GoalSelectionTile(
-                  title: "SCHOLARSHIP",
-                  expandedWidget: Column(
-                    children: const [],
-                  ),
+                BlocBuilder<GoalsCubit, GoalsCubitState>(
+                  builder: (context, state) {
+                    return state.level.maybeMap(
+                      loading: (_) => const Center(
+                        // grey colored tile for shimmer effect
+                        child: GoalSelectionTile(
+                          title: "SCHOLARSHIP",
+                          expandedWidget: SizedBox(
+                            height: 100,
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
+                        ),
+                      ),
+                      loaded: (value) {
+                        return GoalSelectionTile(
+                          title: "SCHOLARSHIP",
+                          expandedWidget: Container(
+                            color: R.color.surface,
+                            child: Column(
+                              children: [
+                                for (final item in value.data)
+                                  StateSelectionTile(
+                                    // capitalize first only
+                                    title: item.level,
+                                    expandedWidget: const SizedBox(),
+                                  )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      orElse: () => const SizedBox.shrink(),
+                    );
+                  },
                 ),
                 GestureDetector(
                   onTap: () {

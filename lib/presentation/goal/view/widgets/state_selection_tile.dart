@@ -1,7 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:pollo_education/utils/design_system/r.dart';
 
 class StateSelectionTile extends StatelessWidget {
@@ -35,14 +34,15 @@ class StateSelectionTile extends StatelessWidget {
           child: Row(
             children: [
               imgUrl == null
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Image.network(imgUrl!, height: 30, width: 30),
+              imgUrl == null ? const SizedBox() : const SizedBox(width: 16),
               Text(
                 title,
                 style: TextStyle(
                     color: R.color.surface,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400),
               ),
             ],
           ),
