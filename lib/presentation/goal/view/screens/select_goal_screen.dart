@@ -117,7 +117,7 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                             ),
                           ),
                         ),
-                        const GoalSelectionTile(
+                        GoalSelectionTile(
                           title: "SCHOLARSHIP",
                           expandedWidget: Column(
                             children: [],
