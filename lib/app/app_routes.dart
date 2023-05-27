@@ -3,6 +3,10 @@ import 'package:pollo_education/presentation/Enterpreneur/view/enterpreneur_scre
 import 'package:pollo_education/presentation/b2b/view/b2b_screen.dart';
 import 'package:pollo_education/presentation/b2c/view/b2c_screen.dart';
 import 'package:pollo_education/presentation/course/view/my_course_screen.dart';
+import 'package:pollo_education/presentation/goal/view/screens/basic_course_screen.dart';
+import 'package:pollo_education/presentation/goal/view/screens/computer_education_screen.dart';
+import 'package:pollo_education/presentation/goal/view/screens/digital_coaching_screen.dart';
+import 'package:pollo_education/presentation/goal/view/screens/select_goal_screen.dart';
 import 'package:pollo_education/presentation/goal/goals_screen.dart';
 import 'package:pollo_education/presentation/home/view/class_detail_screen.dart';
 import 'package:pollo_education/presentation/home/view/home_screen_container.dart';
@@ -28,6 +32,10 @@ final router = GoRouter(routes: [
   GoRoute(
     path: ProfileScreen.routeName,
     builder: (context, state) => const ProfileScreen(),
+  ),
+  GoRoute(
+    path: SelectGoalScreen.routeName,
+    builder: (context, state) => const SelectGoalScreen(),
   ),
   GoRoute(
     path: B2BScreen.routeName,
@@ -87,7 +95,15 @@ final router = GoRouter(routes: [
     builder: (context, state) => const ScholarShipScreen(),
   ),
   GoRoute(
-    path: GoalsScreen.routeName,
-    builder: (context, state) => const GoalsScreen(),
-  )
+    path: BasicCourseScreen.routeName,
+    builder: (context, state) => const BasicCourseScreen(),
+  ),
+  GoRoute(
+    path: ComputerEducationScreen.routeName,
+    builder: (context, state) => const ComputerEducationScreen(),
+  ),
+  GoRoute(
+    path: DigitalCoachingScreen.routeName,
+    builder: (context, state) => const DigitalCoachingScreen(),
+  ),
 ]);
