@@ -1,8 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:pollo_education/di.dart';
-import 'package:pollo_education/presentation/home/view/subject_detail_screen.dart';
-import 'package:pollo_education/presentation/home/view/widgets/app_banner_widget.dart';
 import 'package:pollo_education/presentation/home/view/widgets/app_banners.dart';
 
 class AppBannersContainer extends StatefulWidget {
@@ -23,18 +20,21 @@ class _AppBannersContainerState extends State<AppBannersContainer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 180.0,
+      // height: 180.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Text(
-                widget.banners.header,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  widget.banners.header,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
               const Spacer(),
               GestureDetector(
@@ -56,25 +56,49 @@ class _AppBannersContainerState extends State<AppBannersContainer> {
             ],
           ),
           const SizedBox(height: 8),
-          Expanded(
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: widget.banners.banners.length,
-              separatorBuilder: (context, _) {
-                return const SizedBox(width: 0);
-              },
-              itemBuilder: (context, index) {
-                final banner = widget.banners.banners[index];
-
-                return AppBannerWidget(
-                  banner: banner,
-                  onTap: () {
-                    di<GoRouter>().push(SubjectDetailScreen.routeName);
-                  },
-                );
-              },
+          CarouselSlider(
+            items: [
+              for (final imageData in widget.banners.banners)
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    image: DecorationImage(
+                      image: NetworkImage(imageData.imageUrl!),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+            ],
+            options: CarouselOptions(
+              viewportFraction: 1,
+              height: 180.0,
+              autoPlay: true,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
             ),
-          ),
+          )
+          // Expanded(
+          //   child: ListView.separated(
+          //     scrollDirection: Axis.horizontal,
+          //     itemCount: widget.banners.banners.length,
+          //     separatorBuilder: (context, _) {
+          //       return const SizedBox(width: 0);
+          //     },
+          //     itemBuilder: (context, index) {
+          //       final banner = widget.banners.banners[index];
+
+          //       return AppBannerWidget(
+          //         banner: banner,
+          //         onTap: () {
+          //           di<GoRouter>().push(SubjectDetailScreen.routeName);
+          //         },
+          //       );
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );

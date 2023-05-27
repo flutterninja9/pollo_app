@@ -4,6 +4,7 @@ import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
+import 'package:pollo_education/models/scholarship_level_and_class_model.dart';
 import 'package:pollo_education/models/scholarship_model.dart';
 import 'package:pollo_education/models/state_model.dart';
 import 'package:pollo_education/models/study_material_model.dart';
@@ -54,7 +55,7 @@ abstract class IPolloAppRepository {
       String examId);
   Future<Either<Error, List<ScholarshipModel>>> getScholarshipListByExamId(
       String examId);
-  Future<Either<Error, String>> getScholarshipLevelAndClass();
+  Future<Either<Error, List<ScholarshipLevelAndClassModel>>> getScholarshipLevelAndClass();
   Future<Either<Error, List<ClassModel>>> getClassesByLevel(String level);
   Future<Either<Error, List<ClassModel>>> getQuestionsWithClassAndExam(
       String className, String examId);
