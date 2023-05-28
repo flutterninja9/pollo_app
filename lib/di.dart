@@ -15,6 +15,7 @@ import 'package:pollo_education/presentation/onboarding/cubit/board_selection_cu
 import 'package:pollo_education/presentation/onboarding/cubit/onboarding_cubit.dart';
 import 'package:pollo_education/presentation/onboarding/cubit/state_selection_cubit.dart';
 import 'package:pollo_education/presentation/scholarship/cubit/get_scholarships_cubit.dart';
+import 'package:pollo_education/presentation/scholarship/cubit/scholarship_info_cubit.dart';
 import 'package:pollo_education/resourses/remote/i_pollo_remote_data_source.dart';
 import 'package:pollo_education/resourses/remote/pollo_remote_data_source_impl.dart';
 import 'package:pollo_education/resourses/repository/i_pollo_app_repository.dart';
@@ -28,6 +29,7 @@ import 'presentation/scholarship/cubit/get_scholarship_by_class.dart';
 final di = GetIt.instance;
 
 Future<void> initDi() async {
+  di.registerFactory(() => ScholarshipInfoCubit(di()));
   di.registerFactory(() => GetScholarshipByClassCubit(di()));
   di.registerFactory(() => GetClassByLevelCubit(di()));
   di.registerFactory(() => GoalsCubit(di()));

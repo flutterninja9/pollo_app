@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/di.dart';
 import 'package:pollo_education/presentation/scholarship/cubit/get_scholarship_by_class.dart';
+import 'package:pollo_education/presentation/scholarship/scholarship_info_screen.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
 
@@ -92,144 +93,159 @@ class ScholarshipScreenView extends StatelessWidget {
                       return ListView.builder(
                           itemCount: scholarships.length,
                           itemBuilder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 8),
-                              width: getSize(context).width,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                color: R.color.greenColor,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: R.color.blueColor),
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://polloeducation.tunajifoundation.com/public/storage/upload/${scholarships[index].image}'),
-                                    fit: BoxFit.cover),
-                              ),
-                              child: ClipRRect(
-                                child: BackdropFilter(
-                                  filter:
-                                      ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-                                  child: Container(
-                                    padding: const EdgeInsets.all(16),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color:
-                                            R.color.blueColor.withOpacity(0.9),
-                                        border: Border.all(
-                                            color: R.color.greenColor)),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          scholarships[index].name!,
-                                          style: TextStyle(
-                                              color: R.color.surface,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        const SizedBox(height: 16),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              "Quastions: ${scholarships[index].totalQuestion}",
-                                              style: TextStyle(
-                                                  color: R.color.surface,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                            Text(
-                                              "Marks: ${scholarships[index].marks}",
-                                              style: TextStyle(
-                                                  color: R.color.surface,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 16),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              "Duration: ${scholarships[index].duration}",
-                                              style: TextStyle(
-                                                  color: R.color.surface,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                            Text(
-                                              "Date: ${scholarships[index].date}",
-                                              style: TextStyle(
-                                                  color: R.color.surface,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 32),
-                                        Expanded(
-                                          child: Row(
+                            return GestureDetector(
+                              onTap: () {
+                                di<GoRouter>().push(
+                                  ScholarshipInfoScreen.routeName,
+                                  extra: scholarships[index].examId!,
+                                );
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 8),
+                                width: getSize(context).width,
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  color: R.color.greenColor,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: R.color.blueColor),
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          'https://polloeducation.tunajifoundation.com/public/storage/upload/${scholarships[index].image}'),
+                                      fit: BoxFit.cover),
+                                ),
+                                child: ClipRRect(
+                                  child: BackdropFilter(
+                                    filter:
+                                        ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(16),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: R.color.blueColor
+                                              .withOpacity(0.9),
+                                          border: Border.all(
+                                              color: R.color.greenColor)),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            scholarships[index].name!,
+                                            style: TextStyle(
+                                                color: R.color.surface,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          const SizedBox(height: 16),
+                                          Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
                                             children: [
-                                              Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8,
-                                                        vertical: 6),
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            4),
-                                                    color: R.color.greenColor),
-                                                child: Text(
-                                                  '₹ ${scholarships[index].fees}',
-                                                  style: TextStyle(
+                                              Text(
+                                                "Quastions: ${scholarships[index].totalQuestion}",
+                                                style: TextStyle(
                                                     color: R.color.surface,
-                                                  ),
-                                                ),
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w500),
                                               ),
-                                              TextButton(
-                                                style: TextButton.styleFrom(
-                                                    elevation: 20,
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                      horizontal: 20,
-                                                      vertical: 10,
-                                                    ),
-                                                    shadowColor: R
-                                                        .color.greenColor
-                                                        .withOpacity(0.4),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        30)),
-                                                    backgroundColor:
-                                                        R.color.greenColor,
-                                                    foregroundColor:
-                                                        R.color.surface),
-                                                onPressed: () {},
-                                                child: const Text(
-                                                  'Enroll Now',
-                                                  style:
-                                                      TextStyle(fontSize: 14),
-                                                ),
+                                              Text(
+                                                "Marks: ${scholarships[index].marks}",
+                                                style: TextStyle(
+                                                    color: R.color.surface,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w500),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                      ],
+                                          const SizedBox(height: 16),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "Duration: ${scholarships[index].duration}",
+                                                style: TextStyle(
+                                                    color: R.color.surface,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                              Text(
+                                                "Date: ${scholarships[index].date}",
+                                                style: TextStyle(
+                                                    color: R.color.surface,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 32),
+                                          Expanded(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 8,
+                                                      vertical: 6),
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4),
+                                                      color:
+                                                          R.color.greenColor),
+                                                  child: Text(
+                                                    '₹ ${scholarships[index].fees}',
+                                                    style: TextStyle(
+                                                      color: R.color.surface,
+                                                    ),
+                                                  ),
+                                                ),
+                                                TextButton(
+                                                  style: TextButton.styleFrom(
+                                                      elevation: 20,
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                        horizontal: 20,
+                                                        vertical: 10,
+                                                      ),
+                                                      shadowColor: R
+                                                          .color.greenColor
+                                                          .withOpacity(0.4),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          30)),
+                                                      backgroundColor:
+                                                          R.color.greenColor,
+                                                      foregroundColor:
+                                                          R.color.surface),
+                                                  onPressed: () {},
+                                                  child: const Text(
+                                                    'Enroll Now',
+                                                    style:
+                                                        TextStyle(fontSize: 14),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

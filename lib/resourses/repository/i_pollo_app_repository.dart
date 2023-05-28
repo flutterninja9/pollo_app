@@ -53,8 +53,7 @@ abstract class IPolloAppRepository {
   Future<Either<Error, List<BannerModel>>> getThirdBanners();
   Future<Either<Error, List<BannerModel>>> getBottomBanners();
   Future<Either<Error, List<ScholarshipModel>>> getScholarshipList();
-  Future<Either<Error, ScholarshipInfo>> getScholarshipInfoByExamId(
-      String examId);
+  Future<Either<Error, ScholarshipInfo>> getScholarshipInfoByExamId(String examId);
   Future<Either<Error, List<ScholarshipModel>>> getScholarshipListByExamId(
       String examId);
   Future<Either<Error, List<ScholarshipLevelAndClassModel>>> getScholarshipLevelAndClass();
