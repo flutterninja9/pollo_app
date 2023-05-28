@@ -4,6 +4,7 @@ import 'package:pollo_education/presentation/b2b/view/b2b_screen.dart';
 import 'package:pollo_education/presentation/b2c/view/b2c_screen.dart';
 import 'package:pollo_education/presentation/course/view/my_course_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/basic_course_screen.dart';
+import 'package:pollo_education/presentation/goal/view/screens/board_selection_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/computer_education_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/digital_coaching_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/select_goal_screen.dart';
@@ -119,6 +120,11 @@ final router = GoRouter(routes: [
     path: ScholarshipInfoScreen.routeName,
     builder: (context, state) => ScholarshipInfoScreen(
      examId: state.extra as String,
-    ),
+    ),),
+    
+    GoRoute(
+    path: BoardSelectionScreen.routeName,
+    builder: (context, state) =>
+        BoardSelectionScreen(stateName: state.queryParams['stateName']!),
   ),
 ]);

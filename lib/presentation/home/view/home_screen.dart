@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           create: (context) => di<BannersCubit>()..getBanners(),
         ),
         BlocProvider(
-          create: (context) => di<GetClassCubit>()..getSubjectListByBoardName(),
+          create: (context) => di<GetClassCubit>(),
         ),
       ],
       child: const HomeScreenView(),

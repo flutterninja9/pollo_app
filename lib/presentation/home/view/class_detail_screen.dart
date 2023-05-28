@@ -89,7 +89,7 @@ class _ClassDetailScreenViewState extends State<ClassDetailScreenView>
                   print(subjects);
                   return SafeArea(
                     child: subjects.isEmpty
-                        ? Text('No subject found')
+                        ? const Center(child: Text('No subject found'))
                         : Container(
                             color: R.color.blueColor,
                             child: Column(
