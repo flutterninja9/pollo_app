@@ -12,18 +12,30 @@ class GetClassCubit extends Cubit<AsyncValue<List<ClassModel>>> {
     this.pref,
   ) : super(const AsyncValue.initial());
 
-  Future<void> getSubjectListByBoardName() async {
+  List<ClassModel> classes = [];
+
+  Future<void> getSubjectListByBoardName(String boardName) async {
     try {
       emit(const AsyncValue.loading());
-      String? boardName = pref.getString("boardName");
+      String? boardNam = pref.getString("boardName");
       final failureOrResult =
-          await repository.getClassListByBoardName(boardName!);
+          await repository.getClassListByBoardName(boardName);
       failureOrResult.fold(
         (f) => emit(AsyncValue.failure(f.toString())),
-        (r) => emit(AsyncValue.loaded(r)),
+        (r) {
+          classes = r;
+          emit(AsyncValue.loaded(r));
+        },
       );
     } catch (e) {
       emit(AsyncValue.failure(e.toString()));
     }
+  }
+
+  Future<List<ClassModel>> getClassListByBoardName(String boardName) async {
+    final data = await repository.getClassListByBoardName(boardName);
+    data.fold((l) => [], (r) => classes = r);
+
+    return classes;
   }
 }

@@ -3,13 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/di.dart';
+import 'package:pollo_education/models/board_model.dart';
+import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/state_model.dart';
 import 'package:pollo_education/presentation/goal/cubit/goals_cubit.dart';
 import 'package:pollo_education/presentation/goal/view/screens/basic_course_screen.dart';
+import 'package:pollo_education/presentation/goal/view/screens/board_selection_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/computer_education_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/digital_coaching_screen.dart';
 import 'package:pollo_education/presentation/goal/view/widgets/goal_list_tile.dart';
 import 'package:pollo_education/presentation/goal/view/widgets/goal_selection_tile.dart';
+import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
 import 'package:pollo_education/presentation/scholarship/scholarship_screen.dart';
+import 'package:pollo_education/utils/asyncValue/async_value.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
 
@@ -113,7 +119,10 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                                 for (final item in value.data)
                                   GoalListTile(
                                     fontSize: 16,
-                                    onTap: () {},
+                                    onTap: () {
+                                      di<GoRouter>().push(
+                                          "${BoardSelectionScreen.routeName}?stateName=${item.state}");
+                                    },
                                     title: item.state,
                                     imgUrl:
                                         'https://polloeducation.tunajifoundation.com/public/storage/upload/${item.image}',
