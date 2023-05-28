@@ -1,6 +1,8 @@
 import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/computer_course_model.dart';
+import 'package:pollo_education/models/scholarship_class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
 import 'package:pollo_education/models/scholarship_level_and_class_model.dart';
@@ -44,9 +46,13 @@ abstract class IPolloRemoteDataSource {
   Future<ScholarshipInfo> getScholarshipInfoByExamId(String examId);
   Future<List<ScholarshipModel>> getScholarshipListByExamId(String examId);
   Future<List<ScholarshipLevelAndClassModel>> getScholarshipLevelAndClass();
-  Future<List<ClassModel>> getClassesByLevel(String level);
+  Future<List<ScholarshipClassModel>> getClassesByLevel(String level);
   Future<List<ClassModel>> getQuestionsWithClassAndExam(
       String className, String examId);
   Future<ScholarshipFeeAndDateModel> getScholarshipFeeAndDateByExamId(
       String examId);
+
+  Future<List<ScholarshipModel>> getScholarshipsByClass(String className);
+
+  Future<List<ComputerCourseModel>> getComputerCourseList();
 }

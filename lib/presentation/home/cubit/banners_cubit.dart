@@ -38,7 +38,7 @@ class BannersCubit extends Cubit<HomePageBannersState> {
   Future<void> getFirstBanners() async {
     try {
       emit(state.copyWith(first: const AsyncValue.loading()));
-      final failureOrResult = await repository.getMainBanners();
+      final failureOrResult = await repository.getMiddleFirstBanners();
       failureOrResult.fold(
         (f) => emit(state.copyWith(first: AsyncValue.failure(f.toString()))),
         (r) => emit(state.copyWith(first: AsyncValue.loaded(r))),
@@ -51,7 +51,7 @@ class BannersCubit extends Cubit<HomePageBannersState> {
   Future<void> getSecondBanners() async {
     try {
       emit(state.copyWith(second: const AsyncValue.loading()));
-      final failureOrResult = await repository.getMainBanners();
+      final failureOrResult = await repository.getSecondBanners();
       failureOrResult.fold(
         (f) => emit(state.copyWith(second: AsyncValue.failure(f.toString()))),
         (r) => emit(state.copyWith(second: AsyncValue.loaded(r))),
@@ -64,7 +64,7 @@ class BannersCubit extends Cubit<HomePageBannersState> {
   Future<void> getThirdBanners() async {
     try {
       emit(state.copyWith(third: const AsyncValue.loading()));
-      final failureOrResult = await repository.getMainBanners();
+      final failureOrResult = await repository.getThirdBanners();
       failureOrResult.fold(
         (f) => emit(state.copyWith(third: AsyncValue.failure(f.toString()))),
         (r) => emit(state.copyWith(third: AsyncValue.loaded(r))),
@@ -77,7 +77,7 @@ class BannersCubit extends Cubit<HomePageBannersState> {
   Future<void> getBottomBanners() async {
     try {
       emit(state.copyWith(bottom: const AsyncValue.loading()));
-      final failureOrResult = await repository.getMainBanners();
+      final failureOrResult = await repository.getBottomBanners();
       failureOrResult.fold(
         (f) => emit(state.copyWith(bottom: AsyncValue.failure(f.toString()))),
         (r) => emit(state.copyWith(bottom: AsyncValue.loaded(r))),

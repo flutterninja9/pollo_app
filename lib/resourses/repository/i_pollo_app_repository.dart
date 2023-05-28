@@ -2,6 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/computer_course_model.dart';
+import 'package:pollo_education/models/scholarship_class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
 import 'package:pollo_education/models/scholarship_level_and_class_model.dart';
@@ -51,14 +53,16 @@ abstract class IPolloAppRepository {
   Future<Either<Error, List<BannerModel>>> getThirdBanners();
   Future<Either<Error, List<BannerModel>>> getBottomBanners();
   Future<Either<Error, List<ScholarshipModel>>> getScholarshipList();
-  Future<Either<Error, ScholarshipInfo>> getScholarshipInfoByExamId(
-      String examId);
+  Future<Either<Error, ScholarshipInfo>> getScholarshipInfoByExamId(String examId);
   Future<Either<Error, List<ScholarshipModel>>> getScholarshipListByExamId(
       String examId);
   Future<Either<Error, List<ScholarshipLevelAndClassModel>>> getScholarshipLevelAndClass();
-  Future<Either<Error, List<ClassModel>>> getClassesByLevel(String level);
+  Future<Either<Error, List<ScholarshipModel>>> getScholarshipsByClass(String className);
+  Future<Either<Error, List<ScholarshipClassModel>>> getClassesByLevel(String level);
   Future<Either<Error, List<ClassModel>>> getQuestionsWithClassAndExam(
       String className, String examId);
   Future<Either<Error, ScholarshipFeeAndDateModel>>
       getScholarshipFeeAndDateByExamId(String examId);
+
+  Future<Either<Error, List<ComputerCourseModel>>> getComputerCourseList();
 }
