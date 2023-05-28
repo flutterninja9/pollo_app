@@ -15,6 +15,7 @@ import 'package:pollo_education/presentation/home/view/subject_videos_list_scree
 import 'package:pollo_education/presentation/home/view/video_list_screen.dart';
 import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.dart';
 import 'package:pollo_education/presentation/profile/profile_screen.dart';
+import 'package:pollo_education/presentation/scholarship/classses_screen.dart';
 import 'package:pollo_education/presentation/scholarship/scholarship_screen.dart';
 import 'package:pollo_education/presentation/splash/splash_screen.dart';
 import 'package:pollo_education/utils/youtube_player/pollo_youtube_player.dart';
@@ -91,7 +92,9 @@ final router = GoRouter(routes: [
   ),
   GoRoute(
     path: ScholarShipScreen.routeName,
-    builder: (context, state) => const ScholarShipScreen(),
+    builder: (context, state) => ScholarShipScreen(
+      className: state.extra as String,
+    ),
   ),
   GoRoute(
     path: BasicCourseScreen.routeName,
@@ -104,5 +107,11 @@ final router = GoRouter(routes: [
   GoRoute(
     path: DigitalCoachingScreen.routeName,
     builder: (context, state) => const DigitalCoachingScreen(),
+  ),
+  GoRoute(
+    path: ClassesScreen.routeName,
+    builder: (context, state) => ClassesScreen(
+      level: state.extra as String,
+    ),
   ),
 ]);

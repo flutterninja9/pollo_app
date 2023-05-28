@@ -5,20 +5,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/di.dart';
-import 'package:pollo_education/models/scholarship_model.dart';
-import 'package:pollo_education/presentation/scholarship/cubit/get_scholarships_cubit.dart';
-import 'package:pollo_education/utils/asyncValue/async_value.dart';
+import 'package:pollo_education/presentation/scholarship/cubit/get_scholarship_by_class.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
 
 class ScholarShipScreen extends StatelessWidget {
   static const String routeName = '/scholarship';
-  const ScholarShipScreen({super.key});
-
+  const ScholarShipScreen({
+    Key? key,
+    required this.className,
+  }) : super(key: key);
+  final String className;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => di<GetScholarshipsCubit>()..getScholarshipList(),
+      create: (context) =>
+          di<GetScholarshipByClassCubit>()..getScholarshipList(className),
       child: const ScholarshipScreenView(),
     );
   }
@@ -79,10 +81,9 @@ class ScholarshipScreenView extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
               ),
-              Expanded(child: BlocBuilder<GetScholarshipsCubit,
-                      AsyncValue<List<ScholarshipModel>>>(
-                  builder: (context, state) {
-                return state.map(
+              Expanded(child: BlocBuilder<GetScholarshipByClassCubit,
+                  GetScholarshipsByClassCubitState>(builder: (context, state) {
+                return state.classes.map(
                     initial: (_) => const SizedBox.shrink(),
                     loading: (_) =>
                         const Center(child: CircularProgressIndicator()),
@@ -92,7 +93,7 @@ class ScholarshipScreenView extends StatelessWidget {
                           itemCount: scholarships.length,
                           itemBuilder: (context, index) {
                             return Container(
-                              margin: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 8),
                               width: getSize(context).width,
                               height: 200,
@@ -110,7 +111,7 @@ class ScholarshipScreenView extends StatelessWidget {
                                   filter:
                                       ImageFilter.blur(sigmaX: 2, sigmaY: 2),
                                   child: Container(
-                                    padding: EdgeInsets.all(16),
+                                    padding: const EdgeInsets.all(16),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         color:
@@ -201,9 +202,10 @@ class ScholarshipScreenView extends StatelessWidget {
                                                 style: TextButton.styleFrom(
                                                     elevation: 20,
                                                     padding: const EdgeInsets
-                                                            .symmetric(
-                                                        horizontal: 20,
-                                                        vertical: 10),
+                                                        .symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 10,
+                                                    ),
                                                     shadowColor: R
                                                         .color.greenColor
                                                         .withOpacity(0.4),

@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/scholarship_class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
 import 'package:pollo_education/models/scholarship_level_and_class_model.dart';
@@ -160,11 +162,11 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
   }
 
   @override
-  Future<List<ClassModel>> getClassesByLevel(String level) async {
+  Future<List<ScholarshipClassModel>> getClassesByLevel(String level) async {
     final uri = makeUri('/api/GetClassNameByLevelName/$level');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
-    return data.map((e) => ClassModel.fromJson(e)).toList();
+    return data.map((e) => ScholarshipClassModel.fromJson(e)).toList();
   }
 
   @override
@@ -215,6 +217,15 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
   Future<List<ScholarshipModel>> getScholarshipListByExamId(
       String examId) async {
     final uri = makeUri('/api/GetScholarshipForList/$examId');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => ScholarshipModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<ScholarshipModel>> getScholarshipsByClass(
+      String className) async {
+    final uri = makeUri('/api/GetScholarshipListByClassName/$className');
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
     return data.map((e) => ScholarshipModel.fromJson(e)).toList();

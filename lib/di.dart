@@ -22,9 +22,14 @@ import 'package:pollo_education/resourses/repository/pollo_app_repository_impl.d
 import 'package:pollo_education/utils/api_client/api_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'presentation/scholarship/cubit/get_class_by_levels_cubit.dart';
+import 'presentation/scholarship/cubit/get_scholarship_by_class.dart';
+
 final di = GetIt.instance;
 
 Future<void> initDi() async {
+  di.registerFactory(() => GetScholarshipByClassCubit(di()));
+  di.registerFactory(() => GetClassByLevelCubit(di()));
   di.registerFactory(() => GoalsCubit(di()));
   di.registerFactory(() => BannersCubit(di(), di()));
   di.registerFactory(() => StudyMaterialWithCIdChapterAndSubjectCubit(di()));

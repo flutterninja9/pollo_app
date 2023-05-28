@@ -9,7 +9,7 @@ import 'package:pollo_education/presentation/goal/view/screens/computer_educatio
 import 'package:pollo_education/presentation/goal/view/screens/digital_coaching_screen.dart';
 import 'package:pollo_education/presentation/goal/view/widgets/goal_list_tile.dart';
 import 'package:pollo_education/presentation/goal/view/widgets/goal_selection_tile.dart';
-import 'package:pollo_education/presentation/scholarship/scholarship_screen.dart';
+import 'package:pollo_education/presentation/scholarship/classses_screen.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
 
@@ -155,7 +155,8 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                                     title: item.level,
                                     onTap: () {
                                       di<GoRouter>().push(
-                                        ScholarShipScreen.routeName,
+                                        ClassesScreen.routeName,
+                                        extra: item.level,
                                       );
                                     },
                                   )

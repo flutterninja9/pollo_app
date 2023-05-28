@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/scholarship_class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
 import 'package:pollo_education/models/scholarship_level_and_class_model.dart';
@@ -129,7 +130,7 @@ class PolloRepositoryImpl implements IPolloAppRepository {
   }
 
   @override
-  Future<Either<Error, List<ClassModel>>> getClassesByLevel(
+  Future<Either<Error, List<ScholarshipClassModel>>> getClassesByLevel(
       String level) async {
     return _callbackHandler(
         () => _polloRemoteDataSource.getClassesByLevel(level));
@@ -157,12 +158,6 @@ class PolloRepositoryImpl implements IPolloAppRepository {
   }
 
   @override
-  Future<Either<Error, List<ScholarshipLevelAndClassModel>>> getScholarshipLevelAndClass() async {
-    return _callbackHandler(
-        () => _polloRemoteDataSource.getScholarshipLevelAndClass());
-  }
-
-  @override
   Future<Either<Error, List<ScholarshipModel>>> getScholarshipList() async {
     return _callbackHandler(() => _polloRemoteDataSource.getScholarshipList());
   }
@@ -172,5 +167,18 @@ class PolloRepositoryImpl implements IPolloAppRepository {
       String examId) async {
     return _callbackHandler(
         () => _polloRemoteDataSource.getScholarshipListByExamId(examId));
+  }
+
+  @override
+  Future<Either<Error, List<ScholarshipModel>>>
+      getScholarshipsByClass(String className) async {
+    return _callbackHandler(
+        () => _polloRemoteDataSource.getScholarshipsByClass(className));
+  }
+  
+  @override
+  Future<Either<Error, List<ScholarshipLevelAndClassModel>>> getScholarshipLevelAndClass() {
+    return _callbackHandler(
+        () => _polloRemoteDataSource.getScholarshipLevelAndClass());
   }
 }
