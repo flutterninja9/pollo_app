@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/computer_course_model.dart';
 import 'package:pollo_education/models/scholarship_class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
@@ -180,5 +181,11 @@ class PolloRepositoryImpl implements IPolloAppRepository {
   Future<Either<Error, List<ScholarshipLevelAndClassModel>>> getScholarshipLevelAndClass() {
     return _callbackHandler(
         () => _polloRemoteDataSource.getScholarshipLevelAndClass());
+  }
+
+  @override
+  Future<Either<Error, List<ComputerCourseModel>>> getComputerCourseList() async {
+    return _callbackHandler(
+        () => _polloRemoteDataSource.getComputerCourseList());
   }
 }

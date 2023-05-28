@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/computer_course_model.dart';
 import 'package:pollo_education/models/scholarship_class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
@@ -63,4 +64,6 @@ abstract class IPolloAppRepository {
       String className, String examId);
   Future<Either<Error, ScholarshipFeeAndDateModel>>
       getScholarshipFeeAndDateByExamId(String examId);
+
+  Future<Either<Error, List<ComputerCourseModel>>> getComputerCourseList();
 }

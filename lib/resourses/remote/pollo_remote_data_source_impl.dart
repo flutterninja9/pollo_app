@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:pollo_education/models/banner_model.dart';
 import 'package:pollo_education/models/board_model.dart';
 import 'package:pollo_education/models/class_model.dart';
+import 'package:pollo_education/models/computer_course_model.dart';
 import 'package:pollo_education/models/scholarship_class_model.dart';
 import 'package:pollo_education/models/scholarship_fee_and_date_model.dart';
 import 'package:pollo_education/models/scholarship_info.dart';
@@ -229,5 +228,13 @@ class PolloRemoteDataSourceImpl implements IPolloRemoteDataSource {
     final response = await apiClient.get(uri);
     final data = jsonDecode(response.body)['data'] as List;
     return data.map((e) => ScholarshipModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<ComputerCourseModel>> getComputerCourseList() async {
+    final uri = makeUri('/api/GetComputerCourseList');
+    final response = await apiClient.get(uri);
+    final data = jsonDecode(response.body)['data'] as List;
+    return data.map((e) => ComputerCourseModel.fromJson(e)).toList();
   }
 }

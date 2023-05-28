@@ -169,14 +169,45 @@ class _SelectGoalScreenViewState extends State<SelectGoalScreenView> {
                     );
                   },
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 16),
-                  child: GoalListTile(
-                    onTap: () {
-                      di<GoRouter>().push(ComputerEducationScreen.routeName);
-                    },
-                    title: "COMPUTER EDUCATION",
-                  ),
+                BlocBuilder<GoalsCubit, GoalsCubitState>(
+                  builder: (context, state) {
+                    return state.computerCourses.maybeMap(
+                      loading: (_) => const Center(
+                        // grey colored tile for shimmer effect
+                        child: GoalSelectionTile(
+                          title: "COMPUTER EDUCATION",
+                          expandedWidget: SizedBox(
+                            height: 100,
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
+                        ),
+                      ),
+                      loaded: (value) {
+                        return GoalSelectionTile(
+                          title: "COMPUTER EDUCATION",
+                          expandedWidget: Container(
+                            color: R.color.surface,
+                            child: Column(
+                              children: [
+                                for (final item in value.data)
+                                  GoalListTile(
+                                    fontSize: 16,
+                                    title: item.name,
+                                    onTap: () {
+                                      di<GoRouter>()
+                                      .push(ComputerEducationScreen.routeName,);
+                                    },
+                                  )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      orElse: () => const SizedBox.shrink(),
+                    );
+                  },
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 16),
