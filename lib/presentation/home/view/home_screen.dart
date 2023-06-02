@@ -51,10 +51,11 @@ class _HomeScreenViewState extends State<HomeScreenView> {
   PColor pColor = PColor.instance;
   bool showSelectState = false;
 
-  static const listOfAppOptions = <AppOptionContainer>[
+  final listOfAppOptions = <AppOptionContainer>[
     AppOptionContainer(
       label: "Scholarship",
       icon: Icon(Icons.school),
+      routeName: ScholarShipScreen.routeName,
     ),
     AppOptionContainer(
       label: "Result",
@@ -107,14 +108,15 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      IconButton(
+                      SizedBox(width: 16),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                            foregroundColor: R.color.surface,
+                            backgroundColor: R.color.blueColor),
                         onPressed: () {
                           di<GoRouter>().push(SelectGoalScreen.routeName);
                         },
-                        icon: FaIcon(
-                          FontAwesomeIcons.bullseye,
-                          color: R.color.blueColor,
-                        ),
+                        child: Text("Select Goal"),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
@@ -237,7 +239,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
 
                                     return AppOptionWidget(
                                       option: option,
-                                      onTap: () {},
+                                      onTap: () {
+                                        di<GoRouter>().push(option.routeName!);
+                                      },
                                     );
                                   },
                                 )),
@@ -305,72 +309,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                   )
                 ],
               ),
-              showSelectState
-                  ? Container(
-                      padding: const EdgeInsets.all(16),
-                      margin:
-                          const EdgeInsets.only(left: 36, top: 36, right: 130),
-                      decoration: BoxDecoration(
-                          color: R.color.greenColor,
-                          borderRadius: BorderRadius.circular(6),
-                          boxShadow: [
-                            BoxShadow(
-                                color: R.color.greenColor.withOpacity(0.4),
-                                blurRadius: 200,
-                                spreadRadius: 2)
-                          ]),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          goalTile(
-                              title: "Learning",
-                              icon: FontAwesomeIcons.graduationCap,
-                              onTap: () {
-                                showSelectState = false;
-                                setState(() {});
-                              }),
-                          goalTile(
-                            title: 'Scholarship',
-                            icon: FontAwesomeIcons.teamspeak,
-                            onTap: () {
-                              di<GoRouter>().push(ScholarShipScreen.routeName);
-                              showSelectState = false;
-                              setState(() {});
-                            },
-                          ),
-                        ],
-                      ),
-                    )
-                  : const SizedBox()
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget goalTile(
-      {required String title,
-      required IconData icon,
-      required VoidCallback onTap}) {
-    return TextButton(
-      onPressed: onTap,
-      child: Row(
-        children: [
-          FaIcon(
-            icon,
-            color: R.color.surface,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            title,
-            style: TextStyle(
-                color: R.color.surface,
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          )
-        ],
       ),
     );
   }
@@ -379,14 +320,17 @@ class _HomeScreenViewState extends State<HomeScreenView> {
 class AppOptionContainer {
   final String label;
   final Icon icon;
+  String? routeName;
 
-  const AppOptionContainer({
+  AppOptionContainer({
     required this.label,
     required this.icon,
+    this.routeName,
   });
 
   @override
-  String toString() => 'AppOptionContainer(label: $label, icon: $icon)';
+  String toString() =>
+      'AppOptionContainer(label: $label, icon: $icon,routeName:$routeName)';
 
   @override
   bool operator ==(Object other) {

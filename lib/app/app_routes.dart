@@ -18,6 +18,7 @@ import 'package:pollo_education/presentation/onboarding/view/onboarding_screen.d
 import 'package:pollo_education/presentation/profile/profile_screen.dart';
 import 'package:pollo_education/presentation/scholarship/classses_screen.dart';
 import 'package:pollo_education/presentation/scholarship/scholarship_info_screen.dart';
+import 'package:pollo_education/presentation/scholarship/scholarship_list_screen.dart';
 import 'package:pollo_education/presentation/scholarship/scholarship_screen.dart';
 import 'package:pollo_education/presentation/splash/splash_screen.dart';
 import 'package:pollo_education/utils/youtube_player/pollo_youtube_player.dart';
@@ -94,7 +95,11 @@ final router = GoRouter(routes: [
   ),
   GoRoute(
     path: ScholarShipScreen.routeName,
-    builder: (context, state) => ScholarShipScreen(
+    builder: (context, state) => const ScholarShipScreen(),
+  ),
+  GoRoute(
+    path: ScholarShipListScreen.routeName,
+    builder: (context, state) => ScholarShipListScreen(
       className: state.extra as String,
     ),
   ),
@@ -119,10 +124,10 @@ final router = GoRouter(routes: [
   GoRoute(
     path: ScholarshipInfoScreen.routeName,
     builder: (context, state) => ScholarshipInfoScreen(
-     examId: state.extra as String,
-    ),),
-    
-    GoRoute(
+      examId: state.extra as String,
+    ),
+  ),
+  GoRoute(
     path: BoardSelectionScreen.routeName,
     builder: (context, state) =>
         BoardSelectionScreen(stateName: state.queryParams['stateName']!),

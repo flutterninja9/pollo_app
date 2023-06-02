@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/di.dart';
 import 'package:pollo_education/presentation/scholarship/cubit/get_class_by_levels_cubit.dart';
+import 'package:pollo_education/presentation/scholarship/scholarship_list_screen.dart';
 import 'package:pollo_education/presentation/scholarship/scholarship_screen.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 import 'package:pollo_education/utils/get_size.dart';
@@ -148,7 +149,7 @@ class ClassesScreenView extends StatelessWidget {
                                               foregroundColor: R.color.surface),
                                           onPressed: () {
                                             di<GoRouter>().push(
-                                              ScholarShipScreen.routeName,
+                                              ScholarShipListScreen.routeName,
                                               extra: scholarships[index].name,
                                             );
                                           },

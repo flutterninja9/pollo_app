@@ -50,6 +50,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   get_it: ^7.6.0
   expandable: ^5.0.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
