@@ -12,7 +12,6 @@ class PolloApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Polo Education',
       theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
       routerConfig: di<GoRouter>(),
     );
   }

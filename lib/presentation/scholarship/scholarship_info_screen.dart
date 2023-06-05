@@ -79,8 +79,38 @@ class ScholarshipInfoScreenView extends StatelessWidget {
                         const Center(child: CircularProgressIndicator()),
                     loaded: (value) {
                       final scholarship = value.data;
-                      return ScholarshipInfoWidget(
-                        scholarshipInfo: scholarship,
+                      return Stack(
+                        children: [
+                          ScholarshipInfoWidget(
+                            scholarshipInfo: scholarship,
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: SizedBox(
+                              width: getSize(context).width - 64,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                    elevation: 20,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 10,
+                                    ),
+                                    shadowColor:
+                                        R.color.greenColor.withOpacity(0.4),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
+                                    backgroundColor: R.color.greenColor,
+                                    foregroundColor: R.color.surface),
+                                onPressed: () {},
+                                child: const Text(
+                                  'Enroll Now',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       );
                     },
                     failure: (value) => Center(

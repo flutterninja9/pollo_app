@@ -91,7 +91,7 @@ class _ScholarshipScreenViewState extends State<ScholarshipScreenView> {
                       )),
                 ),
                 Text(
-                  'Scholarship',
+                  'Apply For Scholarship',
                   style: TextStyle(
                       fontSize: 18,
                       color: R.color.blueColor,

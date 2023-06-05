@@ -12,7 +12,7 @@ class ScholarshipInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Card(
           elevation: 2,
           shape: RoundedRectangleBorder(
@@ -103,32 +103,6 @@ class ScholarshipInfoWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                            elevation: 20,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 10,
-                            ),
-                            shadowColor: R.color.greenColor.withOpacity(0.4),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30)),
-                            backgroundColor: R.color.greenColor,
-                            foregroundColor: R.color.surface),
-                        onPressed: () {},
-                        child: const Text(
-                          'Enroll Now',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),

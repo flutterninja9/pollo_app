@@ -37,39 +37,21 @@ class _PolloYoutubePlayerState extends State<PolloYoutubePlayer> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        color: R.color.blueColor,
-        child: Column(
-          children: [
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: YoutubePlayer(
-                controller: _controller,
-                bottomActions: [
-                  CurrentPosition(
-                    controller: _controller,
-                  ),
-                  ProgressBar(
-                    isExpanded: true,
-                    controller: _controller,
-                  ),
-                  FullScreenButton(
-                    controller: _controller,
-                  ),
-                ],
-              ),
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: YoutubePlayer(
+          controller: _controller,
+          bottomActions: [
+            CurrentPosition(
+              controller: _controller,
             ),
-            SizedBox(height: 16),
-            Expanded(
-                child: ListView.builder(
-                    itemCount: 4,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: EdgeInsets.all(16),
-                        height: 20,
-                        color: Colors.green,
-                      );
-                    }))
+            ProgressBar(
+              isExpanded: true,
+              controller: _controller,
+            ),
+            FullScreenButton(
+              controller: _controller,
+            ),
           ],
         ),
       ),
