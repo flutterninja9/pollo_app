@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pollo_education/presentation/Enterpreneur/view/enterpreneur_screen.dart';
 import 'package:pollo_education/presentation/b2b/view/b2b_screen.dart';
 import 'package:pollo_education/presentation/b2c/view/b2c_screen.dart';
+import 'package:pollo_education/presentation/basic_education/basic_education_screem.dart';
 import 'package:pollo_education/presentation/course/view/my_course_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/basic_course_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/board_selection_screen.dart';
@@ -131,5 +132,9 @@ final router = GoRouter(routes: [
     path: BoardSelectionScreen.routeName,
     builder: (context, state) =>
         BoardSelectionScreen(stateName: state.queryParams['stateName']!),
+  ),
+  GoRoute(
+    path: BasicEduactionScreen.routeName,
+    builder: (context, state) => const BasicEduactionScreen(),
   ),
 ]);

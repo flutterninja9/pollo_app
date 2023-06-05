@@ -5,6 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollo_education/app/app_config.dart';
 import 'package:pollo_education/di.dart';
+import 'package:pollo_education/presentation/basic_education/basic_education_screem.dart';
+import 'package:pollo_education/presentation/goal/view/screens/basic_course_screen.dart';
 import 'package:pollo_education/presentation/goal/view/screens/select_goal_screen.dart';
 import 'package:pollo_education/presentation/home/cubit/banners_cubit.dart';
 import 'package:pollo_education/presentation/home/cubit/get_class_cubit.dart';
@@ -54,24 +56,32 @@ class _HomeScreenViewState extends State<HomeScreenView> {
   final listOfAppOptions = <AppOptionContainer>[
     AppOptionContainer(
       label: "Scholarship",
-      icon: Icon(Icons.school),
+      icon: Icons.school,
       routeName: ScholarShipScreen.routeName,
     ),
     AppOptionContainer(
+        label: "Basic Education",
+        icon: FontAwesomeIcons.school,
+        routeName: BasicEduactionScreen.routeName),
+    AppOptionContainer(
+      label: "Computer Education",
+      icon: FontAwesomeIcons.laptopCode,
+    ),
+    AppOptionContainer(
       label: "Result",
-      icon: Icon(Icons.analytics),
+      icon: Icons.analytics,
     ),
     AppOptionContainer(
       label: "Learning",
-      icon: Icon(Icons.book),
+      icon: Icons.book,
     ),
     AppOptionContainer(
       label: "Quiz",
-      icon: Icon(Icons.computer),
+      icon: Icons.computer,
     ),
     AppOptionContainer(
       label: "Digital Coaching",
-      icon: Icon(Icons.table_chart),
+      icon: Icons.table_chart,
     ),
   ];
 
@@ -319,7 +329,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
 
 class AppOptionContainer {
   final String label;
-  final Icon icon;
+  final IconData icon;
   String? routeName;
 
   AppOptionContainer({

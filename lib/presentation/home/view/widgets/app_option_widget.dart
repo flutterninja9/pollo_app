@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pollo_education/presentation/home/view/home_screen.dart';
 import 'package:pollo_education/utils/design_system/r.dart';
 
@@ -32,7 +33,7 @@ class AppOptionWidget extends StatelessWidget {
               backgroundColor: R.color.greenColor.withOpacity(0.2),
               radius: 30,
               foregroundColor: R.color.blueColor,
-              child: option.icon,
+              child: FaIcon(option.icon),
             ),
             const SizedBox(height: 8),
             Row(
