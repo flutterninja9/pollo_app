@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'package:collection/collection.dart';
 
 class ScholarshipLevelAndClassModel {
   final String id;
   final String name;
   final String date;
   final String level;
-  
+
   ScholarshipLevelAndClassModel({
     required this.id,
     required this.name,
@@ -47,7 +48,8 @@ class ScholarshipLevelAndClassModel {
 
   String toJson() => json.encode(toMap());
 
-  factory ScholarshipLevelAndClassModel.fromJson(String source) => ScholarshipLevelAndClassModel.fromMap(json.decode(source));
+  factory ScholarshipLevelAndClassModel.fromJson(String source) =>
+      ScholarshipLevelAndClassModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -57,19 +59,27 @@ class ScholarshipLevelAndClassModel {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is ScholarshipLevelAndClassModel &&
-      other.id == id &&
-      other.name == name &&
-      other.date == date &&
-      other.level == level;
+        other.id == id &&
+        other.name == name &&
+        other.date == date &&
+        other.level == level;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-      name.hashCode ^
-      date.hashCode ^
-      level.hashCode;
+    return id.hashCode ^ name.hashCode ^ date.hashCode ^ level.hashCode;
   }
+}
+
+class ScholarshipLevelClassModel {
+  String? id;
+  String? scholarshipName;
+  List<String>? classes;
+  ScholarshipLevelClassModel({
+    this.id,
+    this.scholarshipName,
+    this.classes,
+  });
 }

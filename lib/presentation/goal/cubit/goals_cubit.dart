@@ -37,7 +37,8 @@ class GoalsCubit extends Cubit<GoalsCubitState> {
       emit(state.copyWith(computerCourses: const AsyncValue.loading()));
       final result = await _repository.getComputerCourseList();
       result.fold(
-          (l) => emit(state.copyWith(computerCourses: AsyncValue.failure(l.toString()))),
+          (l) => emit(state.copyWith(
+              computerCourses: AsyncValue.failure(l.toString()))),
           (r) => emit(state.copyWith(computerCourses: AsyncValue.loaded(r))));
     } catch (e) {
       emit(state.copyWith(computerCourses: AsyncValue.failure(e.toString())));
@@ -80,18 +81,20 @@ class GoalsCubitState {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is GoalsCubitState &&
-      other.level == level &&
-      other.states == states &&
-      other.computerCourses == computerCourses;
+        other.level == level &&
+        other.states == states &&
+        other.computerCourses == computerCourses;
   }
 
   @override
-  int get hashCode => level.hashCode ^ states.hashCode ^ computerCourses.hashCode;
+  int get hashCode =>
+      level.hashCode ^ states.hashCode ^ computerCourses.hashCode;
 
   @override
-  String toString() => 'GoalsCubitState(level: $level, states: $states, computerCourses: $computerCourses)';
+  String toString() =>
+      'GoalsCubitState(level: $level, states: $states, computerCourses: $computerCourses)';
 
   GoalsCubitState copyWith({
     AsyncValue<List<ScholarshipLevelAndClassModel>>? level,
